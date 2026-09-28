@@ -46,6 +46,12 @@
   header .dday{display:inline-block; background:var(--dark); color:#fff;
     font-weight:800; font-size:21px; padding:8px 22px; border-radius:999px;}
   header .route{margin-top:14px; font-size:19px; color:var(--ink-soft); font-weight:600; line-height:1.7;}
+  .fsize{display:flex; align-items:center; justify-content:center; gap:14px; margin-top:16px;}
+  .fsize .lbl{font-size:20px; font-weight:800; color:var(--ink-soft);}
+  .fsize button{width:58px; height:58px; border-radius:18px; background:#fff; border:none;
+    box-shadow:0 4px 12px rgba(120,100,70,.14); font-size:26px; font-weight:900; color:var(--ink); cursor:pointer;}
+  .fsize button:active{transform:scale(.94);}
+  .fsize b{font-size:22px; min-width:70px; text-align:center;}
 
   /* tabs : floating pill, dark active */
   nav.tabs{position:sticky; top:12px; z-index:10; margin:14px 16px 0;}
@@ -161,6 +167,12 @@
     <h1>숙자의 서유럽 여행</h1>
     <span class="dday" id="dday">D-4</span>
     <div class="route">✈ Oct 2 출발 · Oct 13 귀국<br>엄마 + 친구들 · 노랑풍선 인솔자 동행</div>
+    <div class="fsize">
+      <span class="lbl">🔤 글씨</span>
+      <button id="fsMinus" aria-label="글씨 작게">−</button>
+      <b id="fsVal">100%</b>
+      <button id="fsPlus" aria-label="글씨 크게">＋</button>
+    </div>
   </header>
 
   <nav class="tabs"><div class="tabpill">
@@ -246,6 +258,17 @@ if ('serviceWorker' in navigator) {
   var t = new Date(2026,9,2), now = new Date();
   var d = Math.ceil((t - new Date(now.getFullYear(),now.getMonth(),now.getDate()))/864e5);
   document.getElementById('dday').textContent = d>0 ? 'D-'+d : (d===0?'D-Day':'여행 중');
+})();
+
+/* ---------- 글씨 크기 ---------- */
+(function(){
+  var KEY='sookja_eu_fontsize';
+  var fs=parseInt(localStorage.getItem(KEY)||'100',10);
+  function apply(){ document.body.style.zoom=fs/100; document.getElementById('fsVal').textContent=fs+'%'; }
+  function set(v){ fs=Math.min(140,Math.max(85,v)); localStorage.setItem(KEY,String(fs)); apply(); }
+  document.getElementById('fsMinus').addEventListener('click',function(){set(fs-10);});
+  document.getElementById('fsPlus').addEventListener('click',function(){set(fs+10);});
+  apply();
 })();
 
 /* ---------- 일정 데이터 (노랑풍선 공식 일정표 기준, 2026-09-22 확인) ---------- */
