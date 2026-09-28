@@ -62,7 +62,7 @@
     font-family:inherit; white-space:nowrap;}
   nav.tabs button.active{background:var(--dark); color:#fff;}
 
-  main{flex:1; padding:18px 16px 28px;}
+  main{flex:1; padding:18px 16px 110px;}
   .view{display:none;} .view.active{display:block;}
 
   /* pastel card base + colored dot */
@@ -119,6 +119,97 @@
   .fun{background:#FFF8E1; border-radius:14px; padding:14px 16px; margin-top:12px;
     font-size:19px; line-height:1.75; box-shadow:0 4px 10px rgba(120,100,70,.08);}
   .fun b{font-size:20px;}
+
+  /* ---------- 도우미 ---------- */
+  .hcard{display:flex; align-items:center; gap:18px; width:100%; text-align:left; background:var(--card);
+    border:none; border-radius:22px; box-shadow:var(--shadow); padding:24px 20px; margin-bottom:16px;
+    cursor:pointer; font-family:inherit; color:var(--ink);}
+  .hcard .em{font-size:46px; flex-shrink:0;}
+  .hcard b{font-size:25px; display:block; margin-bottom:4px;}
+  .hcard span{font-size:18px; color:var(--muted); font-weight:600; line-height:1.5;}
+  .hcard:active{transform:scale(.98);}
+  .backbtn{display:inline-flex; align-items:center; gap:8px; background:var(--card); border:none;
+    border-radius:999px; box-shadow:var(--shadow); padding:15px 26px; font-size:20px; font-weight:800;
+    font-family:inherit; color:var(--ink); cursor:pointer; margin-bottom:20px;}
+  .helpsub h2.stitle{font-size:29px; margin:0 0 6px;}
+  .helpsub .ssub{font-size:19px; color:var(--muted); font-weight:600; margin-bottom:20px; line-height:1.6;}
+  .stepper{display:flex; align-items:center; justify-content:space-between; background:var(--card);
+    border-radius:20px; box-shadow:var(--shadow); padding:12px; margin-bottom:18px;}
+  .stepper button{width:62px; height:62px; border-radius:16px; border:none; background:var(--bg);
+    font-size:30px; font-weight:900; cursor:pointer; color:var(--ink); font-family:inherit;}
+  .stepper b{font-size:24px;}
+  .medname{display:flex; align-items:center; justify-content:space-between; background:var(--y);
+    border-radius:18px; padding:16px 18px; margin-bottom:18px;}
+  .medname b{font-size:21px;}
+  .medname button{background:none; border:none; font-size:18px; font-weight:800; color:var(--y-deep);
+    text-decoration:underline; cursor:pointer; font-family:inherit;}
+  .medbtn{display:block; width:100%; border:none; border-radius:22px; padding:24px 22px; margin-bottom:14px;
+    font-family:inherit; cursor:pointer; box-shadow:var(--shadow); background:#fff; text-align:left; color:var(--ink);}
+  .medbtn .t{font-size:25px; font-weight:800;}
+  .medbtn .s{font-size:19px; color:var(--muted); font-weight:700; margin-top:6px;}
+  .medbtn.done{background:#E4F4E9;}
+  .medbtn.done .t{color:#1E6B38;}
+  .fxdisplay{background:var(--dark); color:#fff; border-radius:22px; padding:24px 22px; text-align:right; margin-bottom:6px;}
+  .fxdisplay .eur{font-size:42px; font-weight:800; font-variant-numeric:tabular-nums; min-height:56px;}
+  .fxdisplay .krw{font-size:32px; font-weight:800; color:#FFE082; margin-top:8px; font-variant-numeric:tabular-nums;}
+  .fxchips{display:flex; gap:10px; margin:14px 0; flex-wrap:wrap;}
+  .fxchips button{flex:1; min-width:70px; border:none; border-radius:14px; background:var(--card);
+    box-shadow:var(--shadow); padding:14px 0; font-size:20px; font-weight:800; cursor:pointer;
+    font-family:inherit; color:var(--ink);}
+  .fxpad{display:grid; grid-template-columns:repeat(3,1fr); gap:10px;}
+  .fxpad button{height:66px; font-size:29px; font-weight:800; border-radius:16px; border:none;
+    background:#fff; box-shadow:var(--shadow); cursor:pointer; font-family:inherit; color:var(--ink);}
+  .fxpad button:active{transform:scale(.95);}
+  .fxrate{display:flex; align-items:center; justify-content:space-between; margin-top:16px;
+    background:var(--card); border-radius:16px; box-shadow:var(--shadow); padding:14px 18px;}
+  .fxrate span{font-size:19px; font-weight:700; color:var(--muted);}
+  .fxrate b{font-size:21px;}
+  .fxrate button{background:none; border:none; font-size:18px; font-weight:800; color:var(--b-deep);
+    text-decoration:underline; cursor:pointer; font-family:inherit;}
+  .clockbox{background:var(--card); border-radius:22px; box-shadow:var(--shadow); padding:26px 20px;
+    text-align:center; margin-bottom:16px;}
+  .clockbox .city{font-size:20px; font-weight:800; color:var(--muted); margin-bottom:6px;}
+  .clockbox .time{font-size:58px; font-weight:800; font-variant-numeric:tabular-nums; line-height:1.2;}
+  .clockbox .cdate{font-size:19px; color:var(--muted); font-weight:600; margin-top:6px;}
+  .callok{border-radius:18px; padding:20px; font-size:22px; font-weight:800; text-align:center;
+    margin-bottom:16px; line-height:1.6;}
+  .callok.ok{background:#E4F4E9; color:#1E6B38;}
+  .callok.no{background:#ECEAFF; color:#4A3F8F;}
+  .langsec{margin-bottom:24px;}
+  .langsec h3{font-size:23px; margin:0 0 12px;}
+  .phrase{display:flex; align-items:center; gap:14px; background:#fff; border-radius:18px;
+    box-shadow:var(--shadow); padding:16px; margin-bottom:10px;}
+  .phrase .tx{flex:1;}
+  .phrase .f{font-size:22px; font-weight:800;}
+  .phrase .k{font-size:18px; color:var(--muted); font-weight:600; margin-top:2px;}
+  .phrase .spk{width:58px; height:58px; border-radius:50%; border:none; background:var(--y);
+    font-size:27px; cursor:pointer; flex-shrink:0;}
+  .diary-input{width:100%; font-size:22px; padding:18px; border-radius:18px; border:2px solid #E8DCC8;
+    font-family:inherit; box-sizing:border-box; margin-bottom:12px; background:#fff; color:var(--ink);}
+  .photobtns{display:flex; gap:10px; margin-bottom:12px;}
+  .photobtns label{flex:1; text-align:center; background:var(--card); border-radius:16px;
+    box-shadow:var(--shadow); padding:18px 0; font-size:20px; font-weight:800; cursor:pointer;}
+  .photobtns input{display:none;}
+  .diary-preview{width:100%; border-radius:16px; margin-bottom:12px; display:none;}
+  .savebtn{width:100%; border:none; border-radius:18px; background:var(--dark); color:#fff;
+    padding:20px; font-size:23px; font-weight:800; cursor:pointer; font-family:inherit; margin-bottom:22px;}
+  .dentry{background:#fff; border-radius:18px; box-shadow:var(--shadow); padding:18px; margin-bottom:12px;}
+  .dentry .dd{font-size:19px; font-weight:800; color:var(--y-deep); margin-bottom:6px;}
+  .dentry .dt{font-size:21px; line-height:1.6;}
+  .dentry img{width:100%; border-radius:12px; margin-top:12px;}
+  .sos{background:#FFF1F1; border-radius:22px; padding:24px 18px; margin-bottom:18px;
+    box-shadow:var(--shadow); border:2px solid #F3B8B8;}
+  .sos h2{font-size:26px; margin:0 0 16px; text-align:center;}
+  .sosbtn{display:block; width:100%; box-sizing:border-box; background:#D32F2F; color:#fff; border:none;
+    border-radius:18px; padding:22px 16px; font-size:23px; font-weight:800; margin-bottom:12px;
+    cursor:pointer; font-family:inherit; box-shadow:0 4px 12px rgba(211,47,47,.30); line-height:1.5;}
+  .sosbtn small{display:block; font-size:17px; font-weight:600; opacity:.92; margin-top:4px;}
+  .sosedit{display:block; margin:8px auto 0; background:none; border:none; color:var(--muted);
+    font-size:18px; font-weight:700; text-decoration:underline; cursor:pointer; font-family:inherit;}
+  #fabsos{position:fixed; right:16px; bottom:26px; z-index:50; width:70px; height:70px; border-radius:50%;
+    border:none; background:#D32F2F; color:#fff; font-size:34px; cursor:pointer;
+    box-shadow:0 6px 18px rgba(211,47,47,.45); font-family:inherit;}
+
 
   /* checklist */
   .cat{padding:20px 18px; margin-bottom:16px;}
@@ -177,6 +268,7 @@
 
   <nav class="tabs"><div class="tabpill">
     <button class="active" data-v="cal">🗓 일정</button>
+    <button data-v="help">🧰 도우미</button>
     <button data-v="prep">🎒 여행준비</button>
     <button data-v="info">📞 연락처</button>
   </div></nav>
@@ -195,6 +287,104 @@
       <div id="daydetail"></div>
     </section>
 
+
+    <!-- 도우미 -->
+    <section class="view" id="v-help">
+      <div id="help-hub">
+        <button class="hcard" onclick="openHelp('help-med')">
+          <span class="em">💊</span>
+          <span><b>약 챙기기</b><span>아침·저녁 약 드셨는지 체크해요</span></span>
+        </button>
+        <button class="hcard" onclick="openHelp('help-diary')">
+          <span class="em">📷</span>
+          <span><b>하루 일기</b><span>오늘의 한 줄 + 사진으로 기록해요</span></span>
+        </button>
+        <button class="hcard" onclick="openHelp('help-fx')">
+          <span class="em">💶</span>
+          <span><b>유로 계산기</b><span>유로가 한국 돈으로 얼마인지 바로 계산</span></span>
+        </button>
+        <button class="hcard" onclick="openHelp('help-clock')">
+          <span class="em">🕐</span>
+          <span><b>한국 시간</b><span>지금 한국은 몇 시? 전화해도 될까요?</span></span>
+        </button>
+        <button class="hcard" onclick="openHelp('help-talk')">
+          <span class="em">🗣️</span>
+          <span><b>한마디 현지어</b><span>눌러서 발음 듣고 따라해 보세요</span></span>
+        </button>
+      </div>
+
+      <div class="helpsub" id="help-med" style="display:none">
+        <button class="backbtn" onclick="closeHelp()">← 돌아가기</button>
+        <h2 class="stitle">💊 약 챙기기</h2>
+        <p class="ssub">드신 뒤에 버튼을 눌러 체크하세요.<br>여행 중에는 깜빡하기 쉬우니 꼭 확인해요.</p>
+        <div class="medname"><b id="medNameLabel">💊 드시는 약</b><button onclick="editMedName()">바꾸기</button></div>
+        <div class="stepper">
+          <button onclick="stepMed(-1)" aria-label="이전 날">‹</button><b id="medDateLabel"></b><button onclick="stepMed(1)" aria-label="다음 날">›</button>
+        </div>
+        <button class="medbtn" id="medAm" onclick="toggleMed('am')"></button>
+        <button class="medbtn" id="medPm" onclick="toggleMed('pm')"></button>
+      </div>
+
+      <div class="helpsub" id="help-diary" style="display:none">
+        <button class="backbtn" onclick="closeHelp()">← 돌아가기</button>
+        <h2 class="stitle">📷 하루 일기</h2>
+        <p class="ssub">오늘 가장 기억에 남는 한 줄을 적어보세요.<br>나중에 가족과 함께 보는 보물이 돼요.</p>
+        <div class="stepper">
+          <button onclick="stepDiary(-1)" aria-label="이전 날">‹</button><b id="diaryDateLabel"></b><button onclick="stepDiary(1)" aria-label="다음 날">›</button>
+        </div>
+        <input class="diary-input" id="diaryText" placeholder="예: 에펠탑이 생각보다 훨씬 컸어요!">
+        <div class="photobtns">
+          <label>📷 사진 찍기<input type="file" id="diaryCam" accept="image/*" capture="environment"></label>
+          <label>🖼️ 앨범에서<input type="file" id="diaryPick" accept="image/*"></label>
+        </div>
+        <img class="diary-preview" id="diaryPreview" alt="선택한 사진">
+        <p class="ssub">✏️ 쓰는 대로 자동 저장돼요. 사진도 고르면 바로 저장돼요.</p>
+        <div id="diaryList"></div>
+      </div>
+
+      <div class="helpsub" id="help-fx" style="display:none">
+        <button class="backbtn" onclick="closeHelp()">← 돌아가기</button>
+        <h2 class="stitle">💶 유로 계산기</h2>
+        <p class="ssub">물건 가격(유로)을 누르면 한국 돈으로 바꿔줘요.</p>
+        <div class="fxdisplay"><div class="eur" id="fxEur">€ 0</div><div class="krw" id="fxKrw">0원</div></div>
+        <div class="fxchips">
+          <button onclick="fxSet(5)">€5</button>
+          <button onclick="fxSet(10)">€10</button>
+          <button onclick="fxSet(20)">€20</button>
+          <button onclick="fxSet(50)">€50</button>
+          <button onclick="fxSet(100)">€100</button>
+        </div>
+        <div class="fxpad" id="fxpad"></div>
+        <div class="fxrate"><span>환율 (대략)</span><b id="fxRateLabel"></b><button onclick="editFxRate()">바꾸기</button></div>
+        <p class="ssub" style="margin-top:14px;">가게마다 환율이 조금씩 달라요.<br>대략 계산용으로 쓰세요.</p>
+      </div>
+
+      <div class="helpsub" id="help-clock" style="display:none">
+        <button class="backbtn" onclick="closeHelp()">← 돌아가기</button>
+        <h2 class="stitle">🕐 한국 시간</h2>
+        <p class="ssub">전화하기 전에 확인해요.</p>
+        <div class="clockbox">
+          <div class="city">📍 여행지 (파리 기준)</div>
+          <div class="time" id="clockEu">--:--</div>
+          <div class="cdate" id="clockEuDate"></div>
+        </div>
+        <div class="clockbox">
+          <div class="city">🇰🇷 한국</div>
+          <div class="time" id="clockKr">--:--</div>
+          <div class="cdate" id="clockKrDate"></div>
+        </div>
+        <div class="callok" id="callOk"></div>
+        <p class="ssub">서유럽은 한국보다 7시간 느려요. (영국은 8시간)</p>
+      </div>
+
+      <div class="helpsub" id="help-talk" style="display:none">
+        <button class="backbtn" onclick="closeHelp()">← 돌아가기</button>
+        <h2 class="stitle">🗣️ 한마디 현지어</h2>
+        <p class="ssub">🔊 버튼을 눌러 발음을 들어보세요.</p>
+        <div id="talkList"></div>
+      </div>
+    </section>
+
     <!-- 여행준비 -->
     <section class="view" id="v-prep">
       <div class="progress">
@@ -206,6 +396,13 @@
 
     <!-- 연락처 -->
     <section class="view" id="v-info">
+      <div class="sos" id="sosbox">
+        <h2>🆘 긴급할 땐 바로 전화</h2>
+        <button class="sosbtn" id="sosGuide">📞 인솔자에게 전화<small id="sosGuideNum"></small></button>
+        <button class="sosbtn" id="sosSon">📞 아들에게 전화<small id="sosSonNum"></small></button>
+        <button class="sosbtn" onclick="location.href='tel:16669614'">📞 노랑풍선에 전화<small>1666-9614</small></button>
+        <button class="sosedit" onclick="editSos()">전화번호 바꾸기</button>
+      </div>
       <div class="cost">
         <h2>💰 돈 관련 알아두기</h2>
         <ul>
@@ -243,6 +440,7 @@
       </div>
     </section>
   </main>
+  <button id="fabsos" onclick="sosJump()" aria-label="긴급 전화">🆘</button>
 
   <footer>엄마, 즐거운 여행 되세요! 💛</footer>
 </div>
@@ -425,17 +623,268 @@ function renderPrep(){
 }
 
 /* ---------- 탭 ---------- */
+function goTab(v){
+  document.querySelectorAll('nav.tabs button').forEach(function(x){x.classList.toggle('active',x.dataset.v===v);});
+  document.querySelectorAll('.view').forEach(function(x){x.classList.toggle('active',x.id==='v-'+v);});
+  window.scrollTo(0,0);
+}
 document.querySelectorAll('nav.tabs button').forEach(function(b){
-  b.onclick=function(){
-    document.querySelectorAll('nav.tabs button').forEach(function(x){x.classList.remove('active');});
-    document.querySelectorAll('.view').forEach(function(x){x.classList.remove('active');});
-    b.classList.add('active');
-    document.getElementById('v-'+b.dataset.v).classList.add('active');
-    window.scrollTo(0,0);
-  };
+  b.onclick=function(){ goTab(b.dataset.v); };
 });
 
+/* ---------- 도우미: 공통 ---------- */
+function openHelp(id){
+  document.getElementById('help-hub').style.display='none';
+  document.querySelectorAll('.helpsub').forEach(function(x){x.style.display='none';});
+  document.getElementById(id).style.display='block';
+  window.scrollTo(0,0);
+  if(id==='help-clock') tickClock();
+}
+function closeHelp(){
+  document.querySelectorAll('.helpsub').forEach(function(x){x.style.display='none';});
+  document.getElementById('help-hub').style.display='block';
+  window.scrollTo(0,0);
+}
+function defaultTripIdx(){
+  var t=new Date();
+  for(var i=0;i<DAYS.length;i++){
+    if(t.getFullYear()===2026&&t.getMonth()===9&&t.getDate()===DAYS[i].d) return i;
+  }
+  return 0;
+}
+function dateLabel(x){ return '10월 '+x.d+'일 ('+x.dow+')'; }
+function escapeHtml(s){ return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+
+/* ---------- 도우미: 약 챙기기 ---------- */
+var MED_KEY='sookja_eu_med';
+var medState={}; try{ medState=JSON.parse(localStorage.getItem(MED_KEY)||'{}'); }catch(e){ medState={}; }
+var medIdx=defaultTripIdx();
+function stepMed(n){ medIdx=Math.min(DAYS.length-1,Math.max(0,medIdx+n)); renderMed(); }
+function renderMed(){
+  var x=DAYS[medIdx];
+  document.getElementById('medDateLabel').textContent=dateLabel(x);
+  document.getElementById('medNameLabel').innerHTML='💊 드시는 약: <b>'+escapeHtml(medState.name||'미등록')+'</b>';
+  var pairs=[['am','medAm','☀️ 아침 약'],['pm','medPm','🌙 저녁 약']];
+  pairs.forEach(function(pr){
+    var k=pr[0], b=document.getElementById(pr[1]), title=pr[2];
+    var rec=(medState.days&&medState.days[x.d]&&medState.days[x.d][k])||null;
+    if(rec){
+      b.classList.add('done');
+      b.innerHTML='<div class="t">'+title+' ✓</div><div class="s">'+rec+'에 드셨어요 — 다시 누르면 취소돼요</div>';
+    }else{
+      b.classList.remove('done');
+      b.innerHTML='<div class="t">'+title+'</div><div class="s">아직 안 드셨어요 — 드신 뒤 눌러주세요</div>';
+    }
+  });
+}
+function toggleMed(k){
+  var x=DAYS[medIdx];
+  medState.days=medState.days||{};
+  medState.days[x.d]=medState.days[x.d]||{};
+  if(medState.days[x.d][k]){ medState.days[x.d][k]=null; }
+  else{
+    var n=new Date();
+    medState.days[x.d][k]=('0'+n.getHours()).slice(-2)+':'+('0'+n.getMinutes()).slice(-2);
+  }
+  try{ localStorage.setItem(MED_KEY,JSON.stringify(medState)); }catch(e){}
+  renderMed();
+}
+function editMedName(){
+  var v=prompt('드시는 약 이름을 적어주세요 (예: 혈압약, 당뇨약)', medState.name||'');
+  if(v!==null){ medState.name=v.trim(); try{ localStorage.setItem(MED_KEY,JSON.stringify(medState)); }catch(e){} renderMed(); }
+}
+
+/* ---------- 도우미: 하루 일기 ---------- */
+var DIARY_KEY='sookja_eu_diary';
+var diaryState={}; try{ diaryState=JSON.parse(localStorage.getItem(DIARY_KEY)||'{}'); }catch(e){ diaryState={}; }
+var diaryIdx=defaultTripIdx();
+function stepDiary(n){ diaryIdx=Math.min(DAYS.length-1,Math.max(0,diaryIdx+n)); renderDiaryDate(); }
+function persistDiary(){
+  try{ localStorage.setItem(DIARY_KEY,JSON.stringify(diaryState)); }
+  catch(e){ alert('저장 공간이 부족해요. 사진을 조금 지워주세요.'); }
+}
+function renderDiaryDate(){
+  var x=DAYS[diaryIdx];
+  document.getElementById('diaryDateLabel').textContent=dateLabel(x);
+  var e=diaryState[x.d]||{};
+  document.getElementById('diaryText').value=e.text||'';
+  var pv=document.getElementById('diaryPreview');
+  if(e.photo){ pv.src=e.photo; pv.style.display='block'; } else { pv.style.display='none'; pv.removeAttribute('src'); }
+  renderDiaryList();
+}
+function renderDiaryList(){
+  var h='';
+  DAYS.forEach(function(x){
+    var e=diaryState[x.d];
+    if(e&&(e.text||e.photo)){
+      h+='<div class="dentry"><div class="dd">'+dateLabel(x)+'</div>';
+      if(e.text) h+='<div class="dt">'+escapeHtml(e.text)+'</div>';
+      if(e.photo) h+='<img src="'+e.photo+'" alt="일기 사진">';
+      h+='</div>';
+    }
+  });
+  document.getElementById('diaryList').innerHTML=h||'<p class="ssub">아직 쓴 일기가 없어요.<br>오늘부터 한 줄씩 적어보세요.</p>';
+}
+function handleDiaryPhoto(file){
+  if(!file) return;
+  var img=new Image();
+  var url=URL.createObjectURL(file);
+  img.onload=function(){
+    var max=800,w=img.width,h=img.height;
+    if(w>max){ h=Math.round(h*max/w); w=max; }
+    var c=document.createElement('canvas'); c.width=w; c.height=h;
+    c.getContext('2d').drawImage(img,0,0,w,h);
+    URL.revokeObjectURL(url);
+    var x=DAYS[diaryIdx];
+    diaryState[x.d]=diaryState[x.d]||{};
+    diaryState[x.d].photo=c.toDataURL('image/jpeg',0.7);
+    persistDiary(); renderDiaryDate();
+  };
+  img.src=url;
+}
+
+/* ---------- 도우미: 유로 계산기 ---------- */
+var FX_KEY='sookja_eu_fxrate';
+var fxRate=parseFloat(localStorage.getItem(FX_KEY)||'1600')||1600;
+var fxVal='';
+function fxRender(){
+  document.getElementById('fxEur').textContent='€ '+(fxVal===''?'0':fxVal);
+  var eur=parseFloat(fxVal||'0')||0;
+  document.getElementById('fxKrw').textContent=Math.round(eur*fxRate).toLocaleString('ko-KR')+'원';
+  document.getElementById('fxRateLabel').textContent='€1 = '+fxRate.toLocaleString('ko-KR')+'원';
+}
+function fxPress(k){
+  if(k==='C'){ fxVal=''; }
+  else if(k==='B'){ fxVal=fxVal.slice(0,-1); }
+  else{ if(fxVal.length>=6) return; fxVal=(fxVal===''||fxVal==='0')?k:fxVal+k; }
+  fxRender();
+}
+function fxSet(n){ fxVal=String(n); fxRender(); }
+function editFxRate(){
+  var v=prompt('€1당 원화를 입력해주세요 (숫자만)', String(fxRate));
+  if(v===null) return;
+  var n=parseFloat(String(v).replace(/[^0-9.]/g,''));
+  if(n>0){ fxRate=n; try{ localStorage.setItem(FX_KEY,String(n)); }catch(e){} fxRender(); }
+}
+
+/* ---------- 도우미: 한국 시간 ---------- */
+function tickClock(){
+  try{
+    var now=new Date();
+    var tEu=new Intl.DateTimeFormat('ko-KR',{timeZone:'Europe/Paris',hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+    var dEu=new Intl.DateTimeFormat('ko-KR',{timeZone:'Europe/Paris',month:'long',day:'numeric',weekday:'short'}).format(now);
+    var tKr=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+    var dKr=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'long',day:'numeric',weekday:'short'}).format(now);
+    document.getElementById('clockEu').textContent=tEu;
+    document.getElementById('clockEuDate').textContent=dEu;
+    document.getElementById('clockKr').textContent=tKr;
+    document.getElementById('clockKrDate').textContent=dKr;
+    var krH=parseInt(new Intl.DateTimeFormat('en',{timeZone:'Asia/Seoul',hour:'numeric',hour12:false}).format(now).replace(/[^0-9]/g,''),10)||0;
+    var ok=krH>=8&&krH<22;
+    var el=document.getElementById('callOk');
+    el.className='callok '+(ok?'ok':'no');
+    el.innerHTML=ok?'😊 지금 한국에 전화해도<br>괜찮은 시간이에요':'🌙 한국은 지금 쉬는 시간이에요<br>급하지 않으면 아침에 전화해요';
+  }catch(e){}
+}
+
+/* ---------- 도우미: 한마디 현지어 ---------- */
+var PHRASES=[
+ {lang:'🇬🇧 영어 (런던)',code:'en-GB',items:[
+  ['Hello','헬로우','안녕하세요'],['Thank you','땡큐','감사합니다'],
+  ['How much is it?','하우 머치 이즈 잇','얼마예요?'],
+  ['Where is the toilet?','웨어 이즈 더 토일렛','화장실 어디예요?'],
+  ['Help me, please','헬프 미 플리즈','도와주세요']]},
+ {lang:'🇫🇷 프랑스어 (파리)',code:'fr-FR',items:[
+  ['Bonjour','봉주르','안녕하세요'],['Merci','메르씨','감사합니다'],
+  ["C'est combien ?",'쎄 꽁비엥','얼마예요?'],
+  ['Où sont les toilettes ?','우 송 레 트왈렛','화장실 어디예요?'],
+  ['Au secours !','오 스쿠르','도와주세요!']]},
+ {lang:'🇩🇪 독일어 (스위스)',code:'de-DE',items:[
+  ['Guten Tag','구텐 탁','안녕하세요'],['Danke','당케','감사합니다'],
+  ['Wie viel kostet das?','비 필 코 스텟 다스','얼마예요?'],
+  ['Wo ist die Toilette?','보 이스트 디 토일레테','화장실 어디예요?'],
+  ['Hilfe!','힐페','도와주세요!']]},
+ {lang:'🇮🇹 이탈리아어 (이탈리아)',code:'it-IT',items:[
+  ['Buongiorno','부온조르노','안녕하세요'],['Grazie','그라치에','감사합니다'],
+  ['Quanto costa?','콴토 코스타','얼마예요?'],
+  ["Dov'è il bagno?",'도베 일 바뇨','화장실 어디예요?'],
+  ['Aiuto!','아이우토','도와주세요!']]}
+];
+function renderTalk(){
+  var h='';
+  PHRASES.forEach(function(L){
+    h+='<div class="langsec"><h3>'+L.lang+'</h3>';
+    L.items.forEach(function(it){
+      h+='<div class="phrase"><div class="tx"><div class="f">'+escapeHtml(it[0])+'</div>'+
+         '<div class="k">'+escapeHtml(it[1])+' · '+escapeHtml(it[2])+'</div></div>'+
+         '<button class="spk" data-say="'+escapeHtml(it[0])+'" data-lang="'+L.code+'" onclick="speakPhrase(this)">🔊</button></div>';
+    });
+    h+='</div>';
+  });
+  document.getElementById('talkList').innerHTML=h;
+}
+function speakPhrase(btn){
+  try{
+    speechSynthesis.cancel();
+    var u=new SpeechSynthesisUtterance(btn.getAttribute('data-say'));
+    u.lang=btn.getAttribute('data-lang'); u.rate=0.85;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+
+/* ---------- 긴급 전화 ---------- */
+var SOS_KEY='sookja_eu_sos';
+var sosState={}; try{ sosState=JSON.parse(localStorage.getItem(SOS_KEY)||'{}'); }catch(e){ sosState={}; }
+function renderSos(){
+  document.getElementById('sosGuideNum').textContent=sosState.guide?('☎ '+sosState.guide):'번호를 등록해주세요 (아래 버튼)';
+  document.getElementById('sosSonNum').textContent=sosState.son?('☎ '+sosState.son):'번호를 등록해주세요 (아래 버튼)';
+  document.getElementById('sosGuide').onclick=function(){ sosCall('guide'); };
+  document.getElementById('sosSon').onclick=function(){ sosCall('son'); };
+}
+function sosCall(k){
+  if(sosState[k]){ location.href='tel:'+String(sosState[k]).replace(/[^0-9+]/g,''); }
+  else{ editSos(); }
+}
+function editSos(){
+  var g=prompt('인솔자 전화번호를 입력해주세요', sosState.guide||'');
+  if(g===null) return;
+  var sn=prompt('아들(성욱) 전화번호를 입력해주세요', sosState.son||'');
+  if(sn===null) return;
+  sosState.guide=g.trim(); sosState.son=sn.trim();
+  try{ localStorage.setItem(SOS_KEY,JSON.stringify(sosState)); }catch(e){}
+  renderSos();
+}
+function sosJump(){
+  goTab('info');
+  setTimeout(function(){
+    var el=document.getElementById('sosbox');
+    if(el) el.scrollIntoView({block:'center'});
+  },250);
+}
+
 renderCal(); renderDay(); renderPrep();
+renderMed(); renderDiaryDate(); renderTalk(); renderSos(); fxRender(); tickClock();
+setInterval(tickClock,15000);
+(function(){
+  var keys=['1','2','3','4','5','6','7','8','9','C','0','B'];
+  var pad=document.getElementById('fxpad');
+  keys.forEach(function(k){
+    var b=document.createElement('button');
+    b.textContent=(k==='B')?'⌫':k;
+    b.setAttribute('aria-label',k==='B'?'지우기':k);
+    b.onclick=function(){ fxPress(k); };
+    pad.appendChild(b);
+  });
+  document.getElementById('diaryText').addEventListener('input',function(){
+    var x=DAYS[diaryIdx];
+    diaryState[x.d]=diaryState[x.d]||{};
+    diaryState[x.d].text=this.value;
+    persistDiary(); renderDiaryList();
+  });
+  document.getElementById('diaryCam').addEventListener('change',function(){ handleDiaryPhoto(this.files[0]); this.value=''; });
+  document.getElementById('diaryPick').addEventListener('change',function(){ handleDiaryPhoto(this.files[0]); this.value=''; });
+})();
+
 </script>
 </body>
 </html>
