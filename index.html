@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>숙자의 서유럽 여행</title>
+<meta name="description" content="눌러서 일정표 열기">
+<meta property="og:type" content="website">
+<meta property="og:title" content="숙자의 서유럽 여행">
+<meta property="og:description" content="눌러서 일정표 열기">
+<link rel="manifest" href="manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@500;600;700;800&family=Noto+Sans+KR:wght@500;700;800;900&display=swap" rel="stylesheet">
+<meta name="theme-color" content="#FAF6EE">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="서유럽여행">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<style>
+  :root{
+    --bg:#FAF6EE; --ink:#26221B; --ink-soft:#6E6552; --muted:#8A8272;
+    --y:#FFE9A6; --y-deep:#B97B19;
+    --pk:#FFD9E8; --pk-deep:#E0447C;
+    --b:#DCE9FF; --b-deep:#2E6BDD;
+    --g:#DDF2D2; --g-deep:#2F9E5F;
+    --lav:#E7DFFF; --lav-deep:#7C5CD6;
+    --pe:#FFE3C7; --pe-deep:#D97A1F;
+    --dark:#23201B; --card:#FFFFFF;
+    --shadow:0 10px 24px rgba(120,100,70,.10);
+  }
+  *{box-sizing:border-box; -webkit-tap-highlight-color:transparent;}
+  body{margin:0; background:var(--bg); color:var(--ink);
+    font-family:'Lexend','Noto Sans KR',-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Malgun Gothic",sans-serif;
+    font-size:20px; line-height:1.65;}
+  .phone{max-width:480px; margin:0 auto; background:var(--bg); min-height:100vh;
+    display:flex; flex-direction:column;}
+
+  /* header : pastel yellow card */
+  header{background:var(--y); color:var(--ink);
+    margin:16px 16px 0; padding:26px 22px 22px; border-radius:26px;
+    box-shadow:var(--shadow); position:relative;}
+  header .kicker{font-size:16px; color:var(--ink-soft); letter-spacing:2px; font-weight:700;}
+  header h1{margin:6px 0 12px; font-size:33px; line-height:1.3; font-weight:800;}
+  header .dday{display:inline-block; background:var(--dark); color:#fff;
+    font-weight:800; font-size:21px; padding:8px 22px; border-radius:999px;}
+  header .route{margin-top:14px; font-size:19px; color:var(--ink-soft); font-weight:600; line-height:1.7;}
+
+  /* tabs : floating pill, dark active */
+  nav.tabs{position:sticky; top:12px; z-index:10; margin:14px 16px 0;}
+  nav.tabs .tabpill{display:flex; background:var(--card); border-radius:999px;
+    box-shadow:var(--shadow); padding:6px;}
+  nav.tabs button{flex:1; border:0; background:none; padding:14px 2px; font-size:20px;
+    font-weight:700; color:var(--muted); cursor:pointer; border-radius:999px;
+    font-family:inherit; white-space:nowrap;}
+  nav.tabs button.active{background:var(--dark); color:#fff;}
+
+  main{flex:1; padding:18px 16px 28px;}
+  .view{display:none;} .view.active{display:block;}
+
+  /* pastel card base + colored dot */
+  .pastel-0{background:var(--y);} .pastel-1{background:var(--pk);}
+  .pastel-2{background:var(--b);} .pastel-3{background:var(--g);}
+  .pastel-4{background:var(--lav);} .pastel-5{background:var(--pe);}
+  .dotcard{position:relative; border:0; border-radius:22px; box-shadow:var(--shadow);
+    color:var(--ink);}
+  .dotcard::after{content:""; position:absolute; top:18px; right:18px; width:14px; height:14px;
+    border-radius:50%; background:var(--dot,var(--y-deep));}
+
+  /* calendar */
+  .cal{background:var(--card); border-radius:22px; box-shadow:var(--shadow);
+    padding:18px 14px; margin-bottom:16px;}
+  .cal h2{text-align:center; font-size:25px; margin:4px 0 12px; color:var(--ink); font-weight:800;}
+  .cal .grid{display:grid; grid-template-columns:repeat(7,1fr); gap:6px; text-align:center;}
+  .cal .dow{font-size:16px; color:var(--muted); font-weight:700; padding:6px 0;}
+  .cal .dow.sun{color:var(--pk-deep);}
+  .cal button.day{border:0; background:#F4EEE1; border-radius:14px; min-height:60px;
+    font-size:21px; font-weight:700; color:var(--ink); cursor:pointer; font-family:inherit;}
+  .cal button.day.sun{color:var(--pk-deep);}
+  .cal button.day.trip{background:var(--y); color:var(--ink); font-weight:800;}
+  .cal button.day.trip.sun{color:var(--pk-deep);}
+  .cal button.day.sel{background:var(--dark); color:#fff;}
+  .cal button.day.dim{opacity:.30;}
+  .cal .legend{display:flex; gap:16px; justify-content:center; margin-top:12px; font-size:17px; color:var(--muted);}
+  .cal .legend i{display:inline-block; width:16px; height:16px; border-radius:50%; margin-right:6px; vertical-align:-2px;}
+
+  /* day card */
+  .daycard{padding:22px 20px; margin-bottom:16px;}
+  .daycard.pastel-0{--dot:var(--y-deep);} .daycard.pastel-1{--dot:var(--pk-deep);}
+  .daycard.pastel-2{--dot:var(--b-deep);} .daycard.pastel-3{--dot:var(--g-deep);}
+  .daycard .dlabel{display:inline-block; background:var(--dark); color:#fff; font-size:18px;
+    font-weight:800; padding:5px 16px; border-radius:999px; margin-bottom:10px;}
+  .daycard h2{margin:0 0 4px; font-size:28px; color:var(--ink); line-height:1.4; font-weight:800;
+    padding-right:24px;}
+  .daycard .dowline{font-size:18px; color:var(--ink-soft); margin-bottom:14px; font-weight:600;}
+  .sec{margin:16px 0;}
+  .sec h3{font-size:21px; margin:0 0 8px; color:var(--ink); font-weight:800;}
+  .sec h3::before{content:""; display:inline-block; width:10px; height:22px; border-radius:5px;
+    background:var(--dark); margin-right:10px; vertical-align:-3px;}
+  .sec ul{margin:0; padding-left:4px; list-style:none;}
+  .sec li{font-size:20px; padding:6px 0 6px 28px; position:relative; font-weight:500;}
+  .sec li::before{content:"•"; position:absolute; left:8px; color:var(--ink); font-weight:900;}
+  .meals{display:flex; gap:8px; flex-wrap:wrap;}
+  .meals span{background:#fff; border-radius:12px; box-shadow:0 4px 10px rgba(120,100,70,.08);
+    padding:9px 15px; font-size:18px; font-weight:700;}
+  .note{background:#fff; border-radius:14px; box-shadow:0 4px 10px rgba(120,100,70,.08);
+    padding:14px 16px; font-size:19px; margin-top:12px; font-weight:600;}
+  .note b{color:var(--ink);}
+  .opt{background:var(--lav); border-radius:14px; padding:14px 16px; font-size:19px; margin-top:12px;
+    font-weight:600; box-shadow:0 4px 10px rgba(120,100,70,.08);}
+  .opt b{color:var(--ink);}
+
+  /* checklist */
+  .cat{padding:20px 18px; margin-bottom:16px;}
+  .cat.pastel-0{--dot:var(--y-deep);} .cat.pastel-1{--dot:var(--pk-deep);}
+  .cat.pastel-2{--dot:var(--b-deep);} .cat.pastel-3{--dot:var(--g-deep);}
+  .cat.pastel-4{--dot:var(--lav-deep);} .cat.pastel-5{--dot:var(--pe-deep);}
+  .cat h2{font-size:24px; color:var(--ink); margin:0 0 8px; font-weight:800; padding-right:24px;}
+  .chk{display:flex; align-items:flex-start; gap:14px; padding:15px 6px;
+    border-top:2px solid rgba(255,255,255,.65); cursor:pointer;}
+  .chk:first-of-type{border-top:0;}
+  .box{flex:0 0 44px; height:44px; border:3px solid rgba(38,34,27,.35); border-radius:14px;
+    margin-top:2px; display:flex; align-items:center; justify-content:center;
+    font-size:28px; color:#fff; background:#fff;}
+  .chk.done .box{background:var(--g-deep); border-color:var(--g-deep);}
+  .chk .txt{font-size:21px; font-weight:600;}
+  .chk.done .txt{color:var(--muted); text-decoration:line-through;}
+  .chk .sub{display:block; font-size:18px; color:var(--ink-soft); text-decoration:none; font-weight:500;}
+  .progress{background:var(--y); border-radius:22px; box-shadow:var(--shadow);
+    padding:20px; margin-bottom:16px; text-align:center;}
+  .progress .bar{height:22px; background:#fff; border-radius:999px; overflow:hidden; margin-top:12px;}
+  .progress .bar i{display:block; height:100%; background:linear-gradient(90deg,var(--y-deep),#E8C766); width:0;}
+  .progress b{font-size:26px; color:var(--ink);}
+
+  /* contacts */
+  .contact{padding:20px 18px; margin-bottom:14px;}
+  .contact.pastel-1{--dot:var(--pk-deep);} .contact.pastel-2{--dot:var(--b-deep);}
+  .contact.pastel-3{--dot:var(--g-deep);} .contact.pastel-4{--dot:var(--lav-deep);}
+  .contact h2{font-size:23px; color:var(--ink); margin:0 0 8px; font-weight:800; padding-right:24px;}
+  .contact p{font-size:20px; margin:6px 0; font-weight:500;}
+  .contact a{color:var(--b-deep); font-weight:800; font-size:26px; text-decoration:none;}
+  .cost{background:var(--dark); color:#fff; border-radius:22px; box-shadow:var(--shadow);
+    padding:22px 20px; margin-bottom:14px; position:relative;}
+  .cost::after{content:""; position:absolute; top:20px; right:20px; width:14px; height:14px;
+    border-radius:50%; background:var(--y);}
+  .cost h2{margin:0 0 10px; font-size:24px; color:var(--y); font-weight:800;}
+  .cost li{font-size:20px; margin:9px 0; list-style:none; padding:0; font-weight:500;}
+  .cost ul{margin:0; padding:0;}
+  .cost b{color:var(--y);}
+  footer{text-align:center; color:var(--muted); font-size:17px; padding:20px; font-weight:600;}
+</style>
+</head>
+<body>
+<div class="phone">
+  <header>
+    <div class="kicker">서유럽 4개국 12일</div>
+    <h1>숙자의 서유럽 여행</h1>
+    <span class="dday" id="dday">D-4</span>
+    <div class="route">✈ Oct 2 출발 · Oct 13 귀국<br>엄마 + 친구들 · 노랑풍선 인솔자 동행</div>
+  </header>
+
+  <nav class="tabs"><div class="tabpill">
+    <button class="active" data-v="cal">🗓 일정</button>
+    <button data-v="prep">🎒 여행준비</button>
+    <button data-v="info">📞 연락처</button>
+  </div></nav>
+
+  <main>
+    <!-- 일정 -->
+    <section class="view active" id="v-cal">
+      <div class="cal">
+        <h2>2026년 10월</h2>
+        <div class="grid" id="calgrid"></div>
+        <div class="legend">
+          <span><i style="background:var(--y-deep)"></i>여행일</span>
+          <span><i style="background:var(--dark)"></i>선택한 날</span>
+        </div>
+      </div>
+      <div id="daydetail"></div>
+    </section>
+
+    <!-- 여행준비 -->
+    <section class="view" id="v-prep">
+      <div class="progress">
+        <b id="pct">0%</b> 준비됐어요
+        <div class="bar"><i id="bar"></i></div>
+      </div>
+      <div id="checklist"></div>
+    </section>
+
+    <!-- 연락처 -->
+    <section class="view" id="v-info">
+      <div class="cost">
+        <h2>💰 돈 관련 알아두기</h2>
+        <ul>
+          <li>· 선택관광: <b>융프라우 200€ · 리기산 60€ · 카르다다 60€</b><br>전부 하면 <b>320유로</b> (약 49만원, 필수는 아님)</li>
+          <li>· 가이드·기사 경비 <b>120유로</b> 별도</li>
+          <li>· 쇼핑 5회 포함되어 있음</li>
+          <li>· 호텔 택스는 이미 포함 — 현지에서 더 안 냄</li>
+          <li>· 1인실 추가요금 100만원 (해당 시)</li>
+        </ul>
+      </div>
+      <div class="contact dotcard pastel-1">
+        <h2>🆘 비상 연락처</h2>
+        <p>인솔자 · 가이드는 출발 전 문자로 안내</p>
+        <p>노랑풍선 유럽팀 문자번호</p>
+        <p><a href="tel:1666-9614">1666-9614</a></p>
+      </div>
+      <div class="contact dotcard pastel-2">
+        <h2>✈ 항공편</h2>
+        <p><b>KE907</b> Oct 2 (금) 10:55 인천 → 17:20 런던</p>
+        <p><b>KE932</b> Oct 12 (월) 21:25 로마 → Oct 13 (화) 15:55 인천</p>
+        <p style="color:var(--muted); font-size:18px;">대한항공 직항 · 제2터미널 3층 A카운터 집결<br>좌석은 출발 48시간 전부터 항공사에서 미리 지정<br>마일리지 왕복 약 8,000 적립 가능</p>
+      </div>
+      <div class="contact dotcard pastel-3">
+        <h2>🧳 수하물 · 기타</h2>
+        <p>위탁수하물 <b>23kg</b> 1개 · 기내용 <b>10kg</b> 1개</p>
+        <p>수신기(가이드 설명 듣는 기계)는 여행사에서 줌<br>이어폰은 본인 것 + <b>AA건전지 4개</b> 챙기기</p>
+        <p style="color:var(--muted); font-size:18px;">수신기 분실 시 10만원 물어야 해요</p>
+        <p style="color:var(--muted); font-size:18px;">시차: 프랑스·스위스·이탈리아 7시간 / 영국 8시간</p>
+      </div>
+      <div class="contact dotcard pastel-4">
+        <h2>✅ 영국 입국 허가 (ETA)</h2>
+        <p><b style="color:var(--green)">발급 완료</b> — 유효기간 2028년 9월까지</p>
+        <p style="color:var(--muted); font-size:18px;">여권이 바뀌면 새로 받아야 해요</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>엄마, 즐거운 여행 되세요! 💛</footer>
+</div>
+
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function(){ navigator.serviceWorker.register('sw.js'); });
+}
+</script>
+<script>
+/* ---------- D-day ---------- */
+(function(){
+  var t = new Date(2026,9,2), now = new Date();
+  var d = Math.ceil((t - new Date(now.getFullYear(),now.getMonth(),now.getDate()))/864e5);
+  document.getElementById('dday').textContent = d>0 ? 'D-'+d : (d===0?'D-Day':'여행 중');
+})();
+
+/* ---------- 일정 데이터 (노랑풍선 공식 일정표 기준, 2026-09-22 확인) ---------- */
+var DAYS = [
+{d:2,dow:'금',title:'인천 → 런던',sub:'출발일',
+ spots:['인천공항 출발 — 인솔자가 공항에서 동행','KE907 10:55 출발 → 17:20 런던 도착','런던 시내관광: 타워브리지 · 대영박물관 · 빅벤 · 웨스트민스터사원 · 트라팔가광장 · 버킹엄궁전'],
+ meals:['조식 기내식','중식 기내식','석식 피쉬앤칩스'],hotel:'런던 시내 1급 호텔 (출발 1일 전 확정)',
+ notes:['영국 입국 ETA 발급 완료 ✓','장거리 비행 — 기내에서 자주 스트레칭하기']},
+{d:3,dow:'토',title:'런던 → 파리',sub:'',
+ spots:['런던 시내관광: 타워브리지 · 대영박물관 · 빅벤 · 웨스트민스터사원 · 트라팔가광장 · 버킹엄궁전','유로스타 2등석으로 파리 이동 (약 2시간 20분)','에펠탑 2층 전망대 입장 (약 1시간)'],
+ meals:['조식 호텔식','중식 중식','석식 에스까르고+부르기뇽'],hotel:'파리 시내 1급 호텔 (출발 1일 전 확정)',
+ notes:['에펠탑 휴관 시 1층 전망대로 대체']},
+{d:4,dow:'일',title:'파리',sub:'',
+ spots:['루브르 박물관 — 모나리자 · 밀로의 비너스','개선문 · 콩코드광장 · 샹젤리제거리 · 튈르리정원'],
+ meals:['조식 호텔식','중식 중식','석식 한식'],hotel:'파리 시내 1급 호텔 (출발 1일 전 확정)',
+ opt:'선택관광: 몽마르트 + 세느강 유람선 + 전신마사지'},
+{d:5,dow:'월',title:'파리 → 스트라스부르 → 뮐루즈',sub:'',
+ spots:['TGV 2등석으로 스트라스부르 이동 (약 2시간)','쁘띠프랑스 (스트라스부르 구시가지)','노트르담 대성당(외관) · 구텐베르크 광장'],
+ meals:['조식 호텔식','중식 중식','석식 한식'],hotel:'뮐루즈 시내 1급 호텔 (출발 1일 전 확정)'},
+{d:6,dow:'화',title:'뮐루즈 → 루체른 → 인터라켄',sub:'장거리 이동일',
+ spots:['루체른 이동','루체른 시내관광: 카펠교 · 빈사의 사자상 · 호프교회 · 구시가지','인터라켄 이동'],
+ meals:['조식 호텔식','중식 중식','석식 한식'],hotel:'인터라켄 시내 1급 호텔 (출발 1일 전 확정)',
+ opt:'선택관광: 리기산 60€'},
+{d:7,dow:'수',title:'인터라켄 · 융프라우',sub:'',
+ spots:['융프라우 등정 — 산악열차 그린델발트 → 아이거글렛쳐 → 융프라우요흐','정상 약 3시간: 얼음궁전 · 스핑크스 전망대','인터라켄 호수 유람선'],
+ meals:['조식 호텔식','중식 자유식','석식 퐁듀'],hotel:'인터라켄 시내 1급 호텔 (출발 1일 전 확정)',
+ opt:'선택관광: 융프라우 200€ (미참여 시 인터라켄 자유시간) · 리기산 60€',
+ notes:['융프라우는 해발 3,454m — 따뜻하게 입기, 고산증 유의']},
+{d:8,dow:'목',title:'로카르노 · 아스코나 · 루가노 → 밀라노',sub:'',
+ spots:['로카르노 · 아스코나 · 루가노 관광 (마조레 호수)','밀라노 이동 (약 1시간 30분)','두오모 성당 · 스칼라 극장(외관) · 비토리오 에마누엘레 2세 갤러리아 · 스포르체스코성'],
+ meals:['조식 호텔식','중식 중식','석식 한식'],hotel:'밀라노 시내 1급 호텔 (출발 1일 전 확정)',
+ opt:'선택관광: 로카르노 카르다다 전망대 60€ (미참여 시 마조레 호수 자유시간)'},
+{d:9,dow:'금',title:'밀라노 → 베니스',sub:'',
+ spots:['베니스 이동 (약 3시간 30분)','수상버스 바포레토','산마르코 광장 · 산마르코 성당','두칼레 궁전(외관) · 탄식의 다리 · 리알토 다리'],
+ meals:['조식 호텔식','중식 스파게티+피자','석식 한식'],hotel:'베니스 시내 1급 호텔 (출발 1일 전 확정)',
+ opt:'선택관광: 곤돌라 · 수상택시 · 베니스 야경'},
+{d:10,dow:'토',title:'베니스 → 피렌체',sub:'',
+ spots:['피렌체 이동 (약 3시간 30분)','두오모 성당 · 조토의 종탑','시뇨리아 광장 · 베키오 다리 · 미켈란젤로 언덕'],
+ meals:['조식 호텔식','중식 토스카나식 티본스테이크','석식 한식'],hotel:'로마 시내 1급 호텔 (출발 1일 전 확정)',
+ opt:'선택관광: 우피치미술관 · 가죽공장 · 피사사탑+루까'},
+{d:11,dow:'일',title:'로마 · 폼페이 · 포지타노',sub:'',
+ spots:['폼페이 유적 · 소렌토','포지타노 — 아말피 해안 드라이브','트레비 분수 · 스페인 광장','로마 공항 이동 — KE932 21:25 출발 (기내박)'],
+ meals:['조식 호텔식','중식 한식','석식 한식'],hotel:'기내박',
+ notes:['이 밤은 호텔이 없고 비행기에서 자요']},
+{d:12,dow:'월',title:'로마 → 인천',sub:'귀국 비행',
+ spots:['KE932 — 21:25 로마 출발 (기내박)'],
+ meals:['조식 호텔식','중식 기내식','석식 기내식'],hotel:'기내박',
+ notes:['푹 주무세요 ✈']},
+{d:13,dow:'화',title:'인천 도착',sub:'귀국일',
+ spots:['KE932 — 15:55 인천공항 도착'],
+ meals:['조식 기내식'],hotel:'-',
+ notes:['수고하셨습니다! 💛']},
+];
+
+/* ---------- 달력 ---------- */
+var selDay = 2;
+function renderCal(){
+  var g = document.getElementById('calgrid'); g.innerHTML='';
+  ['일','월','화','수','목','금','토'].forEach(function(w,i){
+    var s=document.createElement('div'); s.className='dow'+(i===0?' sun':''); s.textContent=w; g.appendChild(s);
+  });
+  var first = new Date(2026,9,1).getDay();
+  for(var i=0;i<first;i++){ var e=document.createElement('div'); g.appendChild(e); }
+  var trip = {}; DAYS.forEach(function(x){trip[x.d]=1;});
+  for(var d=1;d<=31;d++){
+    (function(d){
+      var b=document.createElement('button');
+      b.className='day'+(new Date(2026,9,d).getDay()===0?' sun':'')+(trip[d]?' trip':'')+(d===selDay?' sel':'');
+      if(!trip[d]) b.classList.add('dim');
+      b.textContent=d;
+      b.onclick=function(){ selDay=d; renderCal(); renderDay(); window.scrollTo({top:document.querySelector('.cal').offsetTop-10,behavior:'smooth'}); };
+      g.appendChild(b);
+    })(d);
+  }
+}
+function renderDay(){
+  var x = DAYS.find(function(v){return v.d===selDay;});
+  var el = document.getElementById('daydetail');
+  if(!x){ el.innerHTML='<div class="daycard dotcard pastel-2"><h2>이동 없는 날</h2><p style="font-size:19px;color:var(--muted)">여행 기간(10/2~10/13) 날짜를 눌러주세요.</p></div>'; return; }
+  var h = '<div class="daycard dotcard pastel-'+(x.d%4)+'">';
+  h += '<span class="dlabel">DAY '+(x.d-1)+'</span>';
+  h += '<h2>'+x.title+'</h2><div class="dowline">10월 '+x.d+'일 ('+x.dow+')'+(x.sub?' · '+x.sub:'')+'</div>';
+  h += '<div class="sec"><h3>일정</h3><ul>'+x.spots.map(function(s){return '<li>'+s+'</li>';}).join('')+'</ul></div>';
+  h += '<div class="sec"><h3>식사</h3><div class="meals">'+x.meals.map(function(m){return '<span>'+m+'</span>';}).join('')+'</div></div>';
+  h += '<div class="sec"><h3>숙박</h3><ul><li>'+x.hotel+'</li></ul></div>';
+  if(x.opt) h += '<div class="opt">🎫 <b>'+x.opt+'</b></div>';
+  (x.notes||[]).forEach(function(n){ h += '<div class="note">⚠️ '+n+'</div>'; });
+  h += '</div>';
+  el.innerHTML = h;
+}
+
+/* ---------- 체크리스트 ---------- */
+var PREP = [
+ {cat:'📄 서류 · 돈', items:[
+   ['여권 챙기기','유효기간 6개월 이상 남았는지 확인'],
+   ['영국 ETA 발급','<b>완료 ✓</b> — 2028년 9월까지 유효'],
+   ['유로·파운드 환전','선택관광(320€)·경비(120€) 쓸 현금'],
+   ['해외결제 되는 카드','카드사에 해외사용 알림'],
+   ['여행자보험','KB손해보험 5,000만원 (71세 기준) — 상품에 포함'],
+   ['이어폰 + AA건전지 4개','가이드 설명 듣는 수신기용 — 분실 시 10만원']]},
+ {cat:'💊 건강', items:[
+   ['매일 먹는 약 여분 챙기기','혈압약 등 + 며칠분 더'],
+   ['상비약','소화제 · 두통약 · 멀미약 · 파스'],
+   ['편한 운동화','많이 걷는 일정 — 새 신발은 금물'],
+   ['목베개','장거리 비행용']]},
+ {cat:'🎒 짐', items:[
+   ['멀티어댑터','유럽 C타입'],
+   ['보조배터리','기내 반입은 손가방에'],
+   ['휴대폰 로밍 / eSIM','출발 전에 신청'],
+   ['10월 유럽은 쌀쌀','따뜻한 겉옷 · 얇은 옷 겹쳐 입기'],
+   ['세면도구 · 여벌 옷','12일치']]},
+ {cat:'📢 출발 전', items:[
+   ['집결 장소 확인','인천 제2터미널 3층 A카운터 노랑풍선 테이블'],
+   ['인솔자 연락처 저장','출발 전 문자로 안내됨'],
+   ['유럽팀에 ETA 화면 보내기','문자번호 1666-9614']]},
+];
+function renderPrep(){
+  var wrap = document.getElementById('checklist'); wrap.innerHTML='';
+  var saved = {};
+  try{ saved = JSON.parse(localStorage.getItem('sookja-prep')||'{}'); }catch(e){}
+  var total=0, done=0;
+  PREP.forEach(function(c,ci){
+    var div=document.createElement('div'); div.className='cat dotcard pastel-'+(ci%4);
+    div.innerHTML='<h2>'+c.cat+'</h2>';
+    c.items.forEach(function(it,ii){
+      total++;
+      var key=ci+'-'+ii, isDone=!!saved[key]; if(isDone) done++;
+      var row=document.createElement('div');
+      row.className='chk'+(isDone?' done':'');
+      row.innerHTML='<div class="box">'+(isDone?'✓':'')+'</div><div class="txt">'+it[0]+(it[1]?'<span class="sub">'+it[1]+'</span>':'')+'</div>';
+      row.onclick=function(){
+        saved[key]=!saved[key];
+        try{localStorage.setItem('sookja-prep',JSON.stringify(saved));}catch(e){}
+        renderPrep();
+      };
+      div.appendChild(row);
+    });
+    wrap.appendChild(div);
+  });
+  var p = total?Math.round(done/total*100):0;
+  document.getElementById('pct').textContent=p+'%';
+  document.getElementById('bar').style.width=p+'%';
+}
+
+/* ---------- 탭 ---------- */
+document.querySelectorAll('nav.tabs button').forEach(function(b){
+  b.onclick=function(){
+    document.querySelectorAll('nav.tabs button').forEach(function(x){x.classList.remove('active');});
+    document.querySelectorAll('.view').forEach(function(x){x.classList.remove('active');});
+    b.classList.add('active');
+    document.getElementById('v-'+b.dataset.v).classList.add('active');
+    window.scrollTo(0,0);
+  };
+});
+
+renderCal(); renderDay(); renderPrep();
+</script>
+</body>
+</html>
