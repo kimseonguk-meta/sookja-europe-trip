@@ -1,6 +1,6 @@
 {
   "background_color": "#FAF6EE",
-  "description": "숙자의 서유럽 4개국 12일 여행 일정표",
+  "description": "우리의 서유럽 4개국 12일 여행 일정표",
   "display": "standalone",
   "icons": [
     {
@@ -16,7 +16,7 @@
     }
   ],
   "lang": "ko",
-  "name": "숙자의 서유럽 여행",
+  "name": "우리의 서유럽 여행",
   "orientation": "portrait",
   "scope": "./",
   "short_name": "서유럽여행",
