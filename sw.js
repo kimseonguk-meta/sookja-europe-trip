@@ -1,5 +1,5 @@
-/* 숙자의 서유럽 여행 — offline-first service worker */
-const CACHE = 'sookja-europe-v4';
+/* 우리의 서유럽 여행 — offline-first service worker */
+const CACHE = 'sookja-europe-v5';
 const ASSETS = [
   './',
   './index.html',
