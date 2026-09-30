@@ -267,15 +267,54 @@
   nav.tabs button.active{background:transparent; color:#fff;}
   @keyframes viewIn{from{opacity:0; transform:translateY(16px);} to{opacity:1; transform:translateY(0);}}
   @keyframes pop{0%{transform:scale(.55);} 55%{transform:scale(1.14);} 100%{transform:scale(1);}}
+  /* ---------- 도우미: 가계부 ---------- */
+  .moneytotal{background:var(--dark); color:#fff; border-radius:22px; padding:24px 22px; text-align:center; margin-bottom:14px;}
+  .moneytotal .mlab{font-size:calc(19px * var(--fsz)); color:#FFE082; font-weight:700;}
+  .moneytotal .mval{font-size:calc(46px * var(--fsz)); font-weight:800; font-variant-numeric:tabular-nums; margin-top:6px;}
+  .moneytotal .msub{font-size:calc(20px * var(--fsz)); color:rgba(255,255,255,.75); font-weight:700; margin-top:4px;}
+  .curtoggle{display:flex; gap:10px; margin-bottom:12px;}
+  .curtoggle button{flex:1; border:none; border-radius:16px; padding:16px 0; font-size:calc(22px * var(--fsz)); font-weight:800; background:var(--card); color:var(--muted); cursor:pointer; box-shadow:var(--shadow); font-family:inherit;}
+  .curtoggle button.on{background:var(--dark); color:#fff;}
+  .money-input{width:100%; font-size:calc(34px * var(--fsz)); padding:18px; border-radius:18px; border:2px solid #E8DCC8; font-family:inherit; box-sizing:border-box; margin-bottom:12px; background:#fff; color:var(--ink); text-align:center; font-weight:800; font-variant-numeric:tabular-nums;}
+  .catchips{display:flex; flex-wrap:wrap; gap:10px; margin-bottom:14px;}
+  .catchips button{flex:1 1 40%; border:2px solid transparent; border-radius:16px; padding:16px 6px; font-size:calc(20px * var(--fsz)); font-weight:800; background:var(--card); color:var(--ink); cursor:pointer; box-shadow:var(--shadow); font-family:inherit; min-height:64px;}
+  .catchips button.on{border-color:var(--y-deep); background:#FFF8E7;}
+  .mday{font-size:calc(20px * var(--fsz)); font-weight:800; color:var(--y-deep); margin:18px 0 8px;}
+  .mentry{display:flex; align-items:center; gap:12px; background:#fff; border-radius:16px; box-shadow:var(--shadow); padding:14px 16px; margin-bottom:10px;}
+  .mentry .ce{font-size:calc(30px * var(--fsz)); flex-shrink:0;}
+  .mentry .tx{flex:1; min-width:0;}
+  .mentry .cc{font-size:calc(19px * var(--fsz)); font-weight:800;}
+  .mentry .dd2{font-size:calc(16px * var(--fsz)); color:var(--muted); font-weight:600; white-space:nowrap;}
+  .mentry .am{font-size:calc(22px * var(--fsz)); font-weight:800; font-variant-numeric:tabular-nums; white-space:nowrap;}
+  .mentry .del{border:none; background:none; font-size:calc(24px * var(--fsz)); color:var(--muted); cursor:pointer; padding:8px; flex-shrink:0;}
+  /* ---------- 도우미: 더치페이 ---------- */
+  .splitstep{display:flex; align-items:center; justify-content:center; gap:22px; margin:6px 0 16px;}
+  .splitstep button{width:74px; height:74px; border-radius:50%; border:none; background:var(--card); box-shadow:var(--shadow); font-size:calc(34px * var(--fsz)); font-weight:900; color:var(--ink); cursor:pointer; font-family:inherit; flex-shrink:0;}
+  .splitstep b{font-size:calc(30px * var(--fsz)); min-width:110px; text-align:center;}
+  .splitresult{background:#FFF8E7; border:2px dashed var(--y-deep); border-radius:22px; padding:24px 20px; text-align:center; margin-top:6px;}
+  .splitresult .slab{font-size:calc(20px * var(--fsz)); font-weight:800; color:var(--muted);}
+  .splitresult .sval{font-size:calc(48px * var(--fsz)); font-weight:800; font-variant-numeric:tabular-nums; margin-top:6px;}
+  .splitresult .ssub2{font-size:calc(20px * var(--fsz)); color:var(--muted); font-weight:700; margin-top:6px;}
+  /* ---------- 도우미: 날씨 ---------- */
+  .wxcard{background:linear-gradient(135deg,#E3F2FD 0%,#FFF8E7 100%); border-radius:22px; box-shadow:var(--shadow); padding:26px 20px; text-align:center; margin-bottom:12px;}
+  .wxcard .wxcity{font-size:calc(22px * var(--fsz)); font-weight:800;}
+  .wxcard .wxmain{display:flex; align-items:center; justify-content:center; gap:14px; margin:10px 0;}
+  .wxcard .wxmain span{font-size:calc(64px * var(--fsz));}
+  .wxcard .wxmain b{font-size:calc(58px * var(--fsz)); font-weight:800; font-variant-numeric:tabular-nums;}
+  .wxcard .wxdesc{font-size:calc(22px * var(--fsz)); font-weight:800; margin-bottom:12px;}
+  .wxcard .wxrow{display:flex; justify-content:center; gap:18px; font-size:calc(18px * var(--fsz)); color:var(--muted); font-weight:700; margin-bottom:14px; flex-wrap:wrap;}
+  .wxcard .wxrow b{color:var(--ink);}
+  .wxcloth{background:#fff; border-radius:16px; padding:16px; font-size:calc(20px * var(--fsz)); font-weight:700; line-height:1.6; text-align:left;}
   .view.active{animation:viewIn .38s cubic-bezier(.22,.8,.3,1);}
   #help-hub{animation:viewIn .38s cubic-bezier(.22,.8,.3,1);}
   .helpsub{animation:viewIn .38s cubic-bezier(.22,.8,.3,1);}
   .daycard{animation:viewIn .45s cubic-bezier(.22,.8,.3,1);}
   .hcard,.medbtn,.fxpad button,.fxchips button,.sosbtn,.photobtns label,.phrase .spk,
-  .stepper button,.fsize button,.backbtn,.cal .day{
+  .stepper button,.fsize button,.backbtn,.cal .day,.catchips button,.curtoggle button,.splitstep button{
     transition:transform .16s ease, box-shadow .22s ease, background-color .25s ease, color .25s ease;}
   .hcard:active,.medbtn:active,.fxpad button:active,.fxchips button:active,.sosbtn:active,
-  .photobtns label:active,.phrase .spk:active,.stepper button:active,.fsize button:active,.backbtn:active{transform:scale(.95);}
+  .photobtns label:active,.phrase .spk:active,.stepper button:active,.fsize button:active,.backbtn:active,
+  .catchips button:active,.curtoggle button:active,.splitstep button:active{transform:scale(.95);}
   .cal .day:active{transform:scale(.9);}
   .chk{transition:background-color .25s ease;}
   .chk:active{background:rgba(255,255,255,.55);}
@@ -346,6 +385,18 @@
         <button class="hcard" onclick="openHelp('help-talk')">
           <span class="em">🗣️</span>
           <span><b>한마디 현지어</b><span>눌러서 발음 듣고 따라해 보세요</span></span>
+        </button>
+        <button class="hcard" onclick="openHelp('help-money')">
+          <span class="em">💰</span>
+          <span><b>여행 가계부</b><span>쓴 돈을 기록하고 합계를 확인해요</span></span>
+        </button>
+        <button class="hcard" onclick="openHelp('help-split')">
+          <span class="em">🧾</span>
+          <span><b>더치페이</b><span>친구들과 나눠 낼 때 1인당 금액 계산</span></span>
+        </button>
+        <button class="hcard" onclick="openHelp('help-wx')">
+          <span class="em">🌤️</span>
+          <span><b>여행지 날씨</b><span>오늘 도시 날씨와 옷차림 안내</span></span>
         </button>
       </div>
 
@@ -418,6 +469,71 @@
         <h2 class="stitle">🗣️ 한마디 현지어</h2>
         <p class="ssub">🔊 버튼을 눌러 발음을 들어보세요.</p>
         <div id="talkList"></div>
+      </div>
+
+      <div class="helpsub" id="help-money" style="display:none">
+        <button class="backbtn" onclick="closeHelp()">← 돌아가기</button>
+        <h2 class="stitle">💰 여행 가계부</h2>
+        <p class="ssub">쓴 돈을 바로바로 기록해요.<br>얼마 썼는지 한눈에 보여줘요.</p>
+        <div class="moneytotal">
+          <div class="mlab">지금까지 쓴 돈</div>
+          <div class="mval" id="moneyTotal">€ 0</div>
+          <div class="msub" id="moneyTotalKrw">약 0원</div>
+        </div>
+        <div class="curtoggle" id="moneyCur">
+          <button class="on" data-cur="EUR" onclick="setMoneyCur('EUR')">€ 유로</button>
+          <button data-cur="KRW" onclick="setMoneyCur('KRW')">₩ 원화</button>
+        </div>
+        <input class="money-input" id="moneyAmt" inputmode="decimal" placeholder="금액 입력 (예: 25)" autocomplete="off">
+        <div class="catchips" id="moneyCats">
+          <button class="on" data-cat="식사" onclick="setMoneyCat('식사')">🍽️ 식사</button>
+          <button data-cat="쇼핑" onclick="setMoneyCat('쇼핑')">🛍️ 쇼핑</button>
+          <button data-cat="선택관광" onclick="setMoneyCat('선택관광')">🎫 선택관광</button>
+          <button data-cat="교통·기타" onclick="setMoneyCat('교통·기타')">🚕 교통·기타</button>
+        </div>
+        <button class="savebtn" onclick="addMoney()">기록하기</button>
+        <div id="moneyList"></div>
+      </div>
+
+      <div class="helpsub" id="help-split" style="display:none">
+        <button class="backbtn" onclick="closeHelp()">← 돌아가기</button>
+        <h2 class="stitle">🧾 더치페이</h2>
+        <p class="ssub">친구들과 나눠 낼 때<br>1인당 얼마인지 계산해줘요.</p>
+        <div class="curtoggle" id="splitCur">
+          <button class="on" data-cur="EUR" onclick="setSplitCur('EUR')">€ 유로</button>
+          <button data-cur="KRW" onclick="setSplitCur('KRW')">₩ 원화</button>
+        </div>
+        <input class="money-input" id="splitAmt" inputmode="decimal" placeholder="총 금액 입력 (예: 48)" autocomplete="off">
+        <div class="splitstep">
+          <button onclick="stepSplit(-1)" aria-label="인원 줄이기">−</button>
+          <b><span id="splitN">2</span>명</b>
+          <button onclick="stepSplit(1)" aria-label="인원 늘리기">＋</button>
+        </div>
+        <div class="splitresult">
+          <div class="slab">1인당 내는 돈</div>
+          <div class="sval" id="splitPer">€ 0</div>
+          <div class="ssub2" id="splitPerAlt"></div>
+        </div>
+      </div>
+
+      <div class="helpsub" id="help-wx" style="display:none">
+        <button class="backbtn" onclick="closeHelp()">← 돌아가기</button>
+        <h2 class="stitle">🌤️ 여행지 날씨</h2>
+        <p class="ssub">오늘 일정 도시의 날씨와<br>옷차림을 알려줘요.</p>
+        <div class="catchips" id="wxCities"></div>
+        <div class="wxcard">
+          <div class="wxcity" id="wxCity">날씨</div>
+          <div class="wxmain"><span id="wxEmoji">🌤️</span><b id="wxTemp">--°</b></div>
+          <div class="wxdesc" id="wxDesc">날씨를 불러오는 중…</div>
+          <div class="wxrow">
+            <span>최고 <b id="wxMax">--°</b></span>
+            <span>최저 <b id="wxMin">--°</b></span>
+            <span>비 올 확률 <b id="wxPop">--%</b></span>
+          </div>
+          <div class="wxcloth" id="wxCloth"></div>
+        </div>
+        <p class="ssub" id="wxNote" style="text-align:center;"></p>
+        <button class="savebtn" onclick="loadWx(true)">🔄 새로고침</button>
       </div>
     </section>
 
@@ -704,6 +820,7 @@ function openHelp(id){
   document.getElementById(id).style.display='block';
   window.scrollTo(0,0);
   if(id==='help-clock') tickClock();
+  if(id==='help-wx') loadWx(false);
 }
 function closeHelp(){
   document.querySelectorAll('.helpsub').forEach(function(x){x.style.display='none';});
@@ -897,6 +1014,193 @@ function speakPhrase(btn){
   }catch(e){}
 }
 
+/* ---------- 도우미: 여행 가계부 ---------- */
+var MONEY_KEY='sookja_eu_money';
+var moneyState=[]; try{ moneyState=JSON.parse(localStorage.getItem(MONEY_KEY)||'[]'); }catch(e){ moneyState=[]; }
+var moneyCur='EUR', moneyCat='식사';
+var MONEY_CATS={'식사':'🍽️','쇼핑':'🛍️','선택관광':'🎫','교통·기타':'🚕'};
+function moneyToEur(e){ return e.cur==='EUR'? e.amt : e.amt/fxRate; }
+function moneyFmt(amt,cur){
+  var n=Math.round(amt).toLocaleString('ko-KR');
+  return cur==='EUR'? '€ '+n : n+'원';
+}
+function setMoneyCur(c){
+  moneyCur=c;
+  document.querySelectorAll('#moneyCur button').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-cur')===c); });
+}
+function setMoneyCat(c){
+  moneyCat=c;
+  document.querySelectorAll('#moneyCats button').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-cat')===c); });
+}
+function moneyDateLabel(iso){
+  var p=iso.split('-'), m=parseInt(p[1],10), d=parseInt(p[2],10);
+  var dow='일월화수목금토'[new Date(parseInt(p[0],10),m-1,d).getDay()];
+  return m+'월 '+d+'일 ('+dow+')';
+}
+function addMoney(){
+  var raw=document.getElementById('moneyAmt').value.replace(/[^0-9.]/g,'');
+  var amt=parseFloat(raw);
+  if(!amt||amt<=0){ alert('금액을 먼저 입력해주세요'); return; }
+  var n=new Date();
+  var iso=n.getFullYear()+'-'+('0'+(n.getMonth()+1)).slice(-2)+'-'+('0'+n.getDate()).slice(-2);
+  moneyState.push({id:Date.now(),d:iso,amt:amt,cur:moneyCur,cat:moneyCat});
+  try{ localStorage.setItem(MONEY_KEY,JSON.stringify(moneyState)); }
+  catch(e){ alert('저장 공간이 부족해요'); return; }
+  document.getElementById('moneyAmt').value='';
+  renderMoney();
+}
+function delMoney(id){
+  if(!confirm('이 기록을 지울까요?')) return;
+  moneyState=moneyState.filter(function(e){ return e.id!==id; });
+  try{ localStorage.setItem(MONEY_KEY,JSON.stringify(moneyState)); }catch(e){}
+  renderMoney();
+}
+function renderMoney(){
+  var totEur=moneyState.reduce(function(s,e){ return s+moneyToEur(e); },0);
+  document.getElementById('moneyTotal').textContent='€ '+Math.round(totEur).toLocaleString('ko-KR');
+  document.getElementById('moneyTotalKrw').textContent='약 '+Math.round(totEur*fxRate).toLocaleString('ko-KR')+'원';
+  var days={};
+  moneyState.forEach(function(e){ (days[e.d]=days[e.d]||[]).push(e); });
+  var h='';
+  Object.keys(days).sort().reverse().forEach(function(iso){
+    h+='<div class="mday">'+moneyDateLabel(iso)+'</div>';
+    days[iso].slice().reverse().forEach(function(e){
+      h+='<div class="mentry"><span class="ce">'+MONEY_CATS[e.cat]+'</span>'+
+        '<div class="tx"><div class="cc">'+escapeHtml(e.cat)+'</div><div class="dd2">'+moneyDateLabel(iso)+'</div></div>'+
+        '<div class="am">'+moneyFmt(e.amt,e.cur)+'</div>'+
+        '<button class="del" onclick="delMoney('+e.id+')" aria-label="기록 지우기">✕</button></div>';
+    });
+  });
+  document.getElementById('moneyList').innerHTML=h||'<p class="ssub">아직 기록이 없어요.<br>쓴 돈을 그때그때 적어보세요.</p>';
+}
+
+/* ---------- 도우미: 더치페이 ---------- */
+var splitCur='EUR', splitN=2;
+function setSplitCur(c){
+  splitCur=c;
+  document.querySelectorAll('#splitCur button').forEach(function(b){ b.classList.toggle('on',b.getAttribute('data-cur')===c); });
+  renderSplit();
+}
+function stepSplit(n){ splitN=Math.min(30,Math.max(1,splitN+n)); renderSplit(); }
+function renderSplit(){
+  document.getElementById('splitN').textContent=splitN;
+  var raw=document.getElementById('splitAmt').value.replace(/[^0-9.]/g,'');
+  var amt=parseFloat(raw)||0;
+  var per=amt/splitN;
+  document.getElementById('splitPer').textContent=moneyFmt(per,splitCur);
+  var alt=document.getElementById('splitPerAlt');
+  if(amt>0){
+    alt.textContent=splitCur==='EUR'
+      ? '약 '+Math.round(per*fxRate).toLocaleString('ko-KR')+'원'
+      : '약 € '+Math.round(per/fxRate).toLocaleString('ko-KR');
+  } else { alt.textContent=''; }
+}
+
+/* ---------- 도우미: 여행지 날씨 ---------- */
+var WX_CITIES=[
+ {name:'런던',lat:51.5074,lon:-0.1278,days:[2,3]},
+ {name:'파리',lat:48.8566,lon:2.3522,days:[3,4]},
+ {name:'스트라스부르',lat:48.5734,lon:7.7521,days:[5]},
+ {name:'루체른',lat:47.0502,lon:8.3093,days:[6]},
+ {name:'인터라켄',lat:46.6863,lon:7.8632,days:[6,7]},
+ {name:'밀라노',lat:45.4642,lon:9.19,days:[8]},
+ {name:'베니스',lat:45.4408,lon:12.3355,days:[9]},
+ {name:'로마',lat:41.9028,lon:12.4964,days:[10,11,12]}
+];
+var WX_KEY='sookja_eu_wx';
+var wxIdx=0;
+(function(){
+  var t=new Date();
+  if(t.getFullYear()===2026&&t.getMonth()===9){
+    for(var i=0;i<WX_CITIES.length;i++){
+      if(WX_CITIES[i].days.indexOf(t.getDate())>=0){ wxIdx=i; break; }
+    }
+  }
+})();
+function wxInfo(code){
+  if(code===0) return ['☀️','맑음'];
+  if(code===1) return ['🌤️','대체로 맑음'];
+  if(code===2) return ['⛅','가끔 흐림'];
+  if(code===3) return ['☁️','흐림'];
+  if(code===45||code===48) return ['🌫️','안개'];
+  if(code>=95) return ['⛈️','천둥번개'];
+  if((code>=71&&code<=77)||code===85||code===86) return ['🌨️','눈'];
+  if(code>=51&&code<=67) return ['🌧️','비'];
+  if(code>=80&&code<=82) return ['🌧️','소나기'];
+  return ['🌤️','-'];
+}
+function wxCloth(tmax,tmin,pop,code){
+  var rain=(pop>=50)||(code>=51&&code<=67)||(code>=80&&code<=82)||code>=95;
+  var s=rain?'☔ 비가 올 수 있어요. <b>우산을 꼭 챙기세요!</b><br>':'';
+  s+='🧥 옷차림: ';
+  if(tmax>=28) s+='반팔에 얇은 겉옷 하나면 돼요.';
+  else if(tmax>=23) s+='긴팔 + 가벼운 겉옷이 좋아요.';
+  else if(tmax>=18) s+='가벼운 외투를 챙기세요.';
+  else if(tmax>=13) s+='따뜻한 외투가 필요해요.';
+  else if(tmax>=8) s+='두꺼운 외투와 목도리를 하세요.';
+  else if(tmax>=3) s+='패딩·목도리·장갑까지 단단히 입으세요.';
+  else s+='최대한 따뜻하게! 패딩·모자·장갑 필수예요.';
+  if(tmin<=5) s+='<br>🌙 아침·저녁은 많이 추우니 여벌 옷을 챙기세요.';
+  return s;
+}
+function renderWxCities(){
+  var h='';
+  WX_CITIES.forEach(function(c,i){
+    h+='<button class="'+(i===wxIdx?'on':'')+'" onclick="setWxCity('+i+')">'+c.name+'</button>';
+  });
+  document.getElementById('wxCities').innerHTML=h;
+}
+function setWxCity(i){ wxIdx=i; loadWx(false); }
+function renderWx(d,ts,stale){
+  var inf=wxInfo(d.code), c=WX_CITIES[wxIdx];
+  document.getElementById('wxCity').textContent=c.name+' 날씨';
+  document.getElementById('wxEmoji').textContent=inf[0];
+  document.getElementById('wxTemp').textContent=Math.round(d.t)+'°';
+  document.getElementById('wxDesc').textContent=inf[1];
+  document.getElementById('wxMax').textContent=Math.round(d.max)+'°';
+  document.getElementById('wxMin').textContent=Math.round(d.min)+'°';
+  document.getElementById('wxPop').textContent=Math.round(d.pop)+'%';
+  document.getElementById('wxCloth').innerHTML=wxCloth(d.max,d.min,d.pop,d.code);
+  var note=document.getElementById('wxNote');
+  if(stale){ note.textContent='📶 인터넷이 안 돼서 마지막으로 본 날씨를 보여줘요.'; }
+  else if(ts){
+    var mins=Math.max(0,Math.round((Date.now()-ts)/60000));
+    note.textContent=mins<1?'방금 확인한 날씨예요.':mins+'분 전에 확인한 날씨예요.';
+  } else { note.textContent=''; }
+}
+function loadWx(force){
+  renderWxCities();
+  var cached=null;
+  try{ cached=JSON.parse(localStorage.getItem(WX_KEY)||'null'); }catch(e){}
+  var c=WX_CITIES[wxIdx];
+  if(!force&&cached&&cached.name===c.name&&(Date.now()-cached.ts)<3600000){ renderWx(cached.data,cached.ts,false); return; }
+  document.getElementById('wxCity').textContent=c.name+' 날씨';
+  document.getElementById('wxDesc').textContent='날씨를 불러오는 중…';
+  document.getElementById('wxNote').textContent='';
+  var url='https://api.open-meteo.com/v1/forecast?latitude='+c.lat+'&longitude='+c.lon+
+    '&current=temperature_2m,weather_code&daily=weather_code,temperature_2m_max,temperature_2m_min,precipitation_probability_max'+
+    '&timezone=auto&forecast_days=1';
+  fetch(url).then(function(r){ if(!r.ok) throw 0; return r.json(); }).then(function(j){
+    var d={t:j.current.temperature_2m,code:j.current.weather_code,
+      max:j.daily.temperature_2m_max[0],min:j.daily.temperature_2m_min[0],
+      pop:j.daily.precipitation_probability_max[0]||0};
+    try{ localStorage.setItem(WX_KEY,JSON.stringify({name:c.name,data:d,ts:Date.now()})); }catch(e){}
+    if(WX_CITIES[wxIdx].name===c.name) renderWx(d,Date.now(),false);
+  }).catch(function(){
+    if(cached&&cached.name===c.name){ renderWx(cached.data,cached.ts,true); }
+    else{
+      document.getElementById('wxEmoji').textContent='📶';
+      document.getElementById('wxTemp').textContent='--°';
+      document.getElementById('wxDesc').textContent='날씨를 볼 수 없어요';
+      document.getElementById('wxMax').textContent='--°';
+      document.getElementById('wxMin').textContent='--°';
+      document.getElementById('wxPop').textContent='--%';
+      document.getElementById('wxCloth').innerHTML='와이파이나 데이터에 연결된 뒤<br>🔄 새로고침을 눌러주세요.';
+      document.getElementById('wxNote').textContent='';
+    }
+  });
+}
+
 /* ---------- 긴급 전화 ---------- */
 var SOS_KEY='sookja_eu_sos';
 var sosState={}; try{ sosState=JSON.parse(localStorage.getItem(SOS_KEY)||'{}'); }catch(e){ sosState={}; }
@@ -932,6 +1236,7 @@ moveTabInk();
 window.addEventListener('resize',moveTabInk);
 if(document.fonts&&document.fonts.ready) document.fonts.ready.then(moveTabInk);
 renderMed(); renderDiaryDate(); renderTalk(); renderSos(); fxRender(); tickClock();
+renderMoney(); renderSplit(); renderWxCities();
 setInterval(tickClock,15000);
 (function(){
   var keys=['1','2','3','4','5','6','7','8','9','C','0','B'];
@@ -951,6 +1256,8 @@ setInterval(tickClock,15000);
   });
   document.getElementById('diaryCam').addEventListener('change',function(){ handleDiaryPhoto(this.files[0]); this.value=''; });
   document.getElementById('diaryPick').addEventListener('change',function(){ handleDiaryPhoto(this.files[0]); this.value=''; });
+  document.getElementById('splitAmt').addEventListener('input',function(){ renderSplit(); });
+  document.getElementById('moneyAmt').addEventListener('keydown',function(e){ if(e.key==='Enter') addMoney(); });
 })();
 
 </script>
