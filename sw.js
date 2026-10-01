@@ -1,5 +1,5 @@
 /* 우리의 서유럽 여행 — offline-first service worker */
-const CACHE = 'sookja-europe-v6';
+const CACHE = 'sookja-europe-v7';
 const ASSETS = [
   './',
   './index.html',
