@@ -338,17 +338,135 @@
   #fabsos{transition:transform .16s ease;}
   #fabsos:active{transform:scale(.9);}
   footer{text-align:center; color:var(--muted); font-size:calc(17px * var(--fsz)); padding:20px; font-weight:600;}
+
+/* ================= REFINED mockup v3: multi pastel accents ================= */
+:root{
+  --bl:#3B82F6; --bls:#DBEAFE;
+  --gr:#22C55E; --grs:#D9F5E5;
+  --am:#F59E0B; --ams:#FDEECD;
+  --pu:#8B5CF6; --pus:#E9E2FB;
+  --pk:#EC4899; --pks:#FBDCEC;
+  --or:#F97316; --ors:#FDE3CF;
+  --te:#14B8A6; --tes:#CFF5EF;
+  --in:#6366F1; --ins:#DEE0FB;
+  --paper:#FAFAF7; --line:#F0EAE0; --ink2:#211E1A; --mut2:#8B8474;
+}
+body{background:var(--paper)!important;}
+.phone{background:var(--paper)!important;}
+header.rhd{background:transparent!important;box-shadow:none!important;margin:0!important;
+  padding:24px 20px 4px!important;border-radius:0!important;overflow:visible!important;}
+header.rhd::before{display:none!important;}
+.rhd-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.rkicker{font-size:calc(13px * var(--fsz));letter-spacing:3px;font-weight:800;color:#D97706;}
+header.rhd h1{font-size:calc(27px * var(--fsz))!important;font-weight:800!important;letter-spacing:-.5px;margin:6px 0 0!important;}
+.rdday{background:var(--or);color:#fff;font-weight:800;font-size:calc(16px * var(--fsz));
+  padding:9px 18px;border-radius:999px;white-space:nowrap;margin-top:2px;}
+.rfsize{display:flex;align-items:center;gap:10px;margin-top:14px;background:#fff;
+  border:1px solid var(--line);border-radius:999px;padding:7px 10px 7px 18px;width:max-content;
+  box-shadow:0 2px 10px rgba(80,70,55,.05)!important;}
+.rfsize .flbl{font-size:calc(15px * var(--fsz));font-weight:800;color:var(--mut2);}
+.rfsize button{width:46px!important;min-height:46px!important;border-radius:999px!important;
+  background:#F5F2EB!important;font-size:calc(21px * var(--fsz))!important;box-shadow:none!important;border:none!important;}
+.rfsize b{font-size:calc(16px * var(--fsz))!important;min-width:54px!important;text-align:center;}
+nav.tabs{top:8px!important;margin:14px 16px 0!important;}
+nav.tabs .tabpill{background:#fff!important;border:1px solid var(--line)!important;
+  box-shadow:0 6px 18px rgba(80,70,55,.07)!important;border-radius:999px!important;padding:5px!important;flex-wrap:wrap;}
+#tabink{display:none!important;}
+nav.tabs button[data-v="cal"]{--tc:var(--bl);--tsh:rgba(59,130,246,.35);}
+nav.tabs button[data-v="help"]{--tc:var(--gr);--tsh:rgba(34,197,94,.35);}
+nav.tabs button[data-v="prep"]{--tc:var(--am);--tsh:rgba(245,158,11,.35);}
+nav.tabs button[data-v="info"]{--tc:var(--pu);--tsh:rgba(139,92,246,.35);}
+nav.tabs button{color:var(--tc)!important;opacity:.55;font-size:calc(17px * var(--fsz))!important;font-weight:800!important;z-index:1;}
+nav.tabs button.active{opacity:1;background:var(--tc)!important;color:#fff!important;
+  box-shadow:0 4px 12px var(--tsh)!important;}
+.cal,.daycard,.cat,.contact,.hcard,.medbtn,.phrase,.dentry,.stepper,.fxrate,.clockbox,
+.fxchips button,.fxpad button,.photobtns label,.money-input,.diary-input,.mentry,
+.wxcard,.splitresult,.moneytotal,.progress,.cost,.sos,.callok,.medname{
+  background:#fff!important;border:1px solid var(--line)!important;
+  box-shadow:0 6px 18px rgba(80,70,55,.06)!important;}
+.wxcloth{background:#F7F4ED!important;border:1px solid var(--line);}
+#help-hub .hcard:nth-child(n){background:#fff!important;}
+.daycard.pastel-0,.daycard.pastel-1,.daycard.pastel-2,.daycard.pastel-3,
+.cat.pastel-0,.cat.pastel-1,.cat.pastel-2,.cat.pastel-3{background:#fff!important;}
+.pastel-0{--dc:var(--bl);} .pastel-1{--dc:var(--gr);} .pastel-2{--dc:var(--am);} .pastel-3{--dc:var(--pu);}
+.dotcard::after{background:#E7E0D2!important;}
+.daycard .dlabel{background:var(--dc)!important;color:#fff!important;
+  box-shadow:0 4px 12px rgba(90,90,90,.25)!important;}
+.daycard h2{font-weight:800!important;}
+.sec h3::before{background:var(--dc)!important;}
+.sec li::before{color:var(--dc)!important;}
+.meals span{background:#F7F4ED!important;box-shadow:none!important;border:1px solid var(--line);}
+.note,.opt,.fun{background:#F7F4ED!important;box-shadow:none!important;border:1px solid var(--line);}
+.dowline{color:var(--mut2)!important;}
+.cal button.day{background:#F5F2EB!important;}
+.cal button.day.trip{background:var(--bls)!important;color:#1D4ED8!important;font-weight:800!important;}
+.cal button.day.trip.sun{color:#1D4ED8!important;}
+.cal button.day.sel{background:var(--bl)!important;color:#fff!important;}
+.cal button.day.sun{color:var(--mut2)!important;}
+.cal .dow.sun{color:var(--mut2)!important;}
+.cal .legend span:first-child i{background:var(--bls)!important;border:2px solid var(--bl);box-sizing:border-box;}
+.cal .legend span:last-child i{background:var(--bl)!important;}
+#help-hub .hcard:nth-child(8n+1) .em{background:var(--bls);}
+#help-hub .hcard:nth-child(8n+2) .em{background:var(--grs);}
+#help-hub .hcard:nth-child(8n+3) .em{background:var(--ams);}
+#help-hub .hcard:nth-child(8n+4) .em{background:var(--pus);}
+#help-hub .hcard:nth-child(8n+5) .em{background:var(--pks);}
+#help-hub .hcard:nth-child(8n+6) .em{background:var(--ors);}
+#help-hub .hcard:nth-child(8n+7) .em{background:var(--tes);}
+#help-hub .hcard:nth-child(8n+8) .em{background:var(--ins);}
+.hcard .em{border-radius:16px;flex:0 0 auto;
+  width:calc(62px * var(--fsz));height:calc(62px * var(--fsz));
+  display:inline-flex;align-items:center;justify-content:center;font-size:calc(30px * var(--fsz))!important;}
+#help-hub .hcard .em{width:calc(58px * var(--fsz));height:calc(58px * var(--fsz));font-size:calc(28px * var(--fsz))!important;}
+#help-med{--hc:var(--bl);} #help-diary{--hc:var(--gr);} #help-fx{--hc:var(--am);}
+#help-clock{--hc:var(--pu);} #help-talk{--hc:var(--pk);} #help-money{--hc:var(--or);}
+#help-split{--hc:var(--te);} #help-wx{--hc:var(--in);}
+.helpsub .savebtn{background:var(--hc)!important;box-shadow:0 6px 16px rgba(90,90,90,.25)!important;}
+.helpsub .medname button{color:var(--bl)!important;}
+.backbtn{background:#F5F2EB!important;color:var(--ink2)!important;box-shadow:none!important;border:1px solid var(--line)!important;}
+.medbtn.done{background:#EAF6EE!important;border-color:#BFE3CB!important;}
+.medbtn.done .t{color:#1E6B38!important;}
+#help-fx .fxdisplay .krw{color:#B45309!important;}
+#help-fx .fxrate button{color:#B45309!important;}
+#help-talk .phrase .spk{background:var(--pks)!important;}
+#help-split .splitresult .sval{color:#0F766E!important;}
+#help-money .moneytotal{color:var(--ink2)!important;}
+.stepper button{background:#F5F2EB!important;box-shadow:none!important;}
+.dentry .dd{color:var(--dc)!important;}
+.moneytotal .mlab{color:var(--mut2)!important;}
+.moneytotal .msub{color:var(--mut2)!important;}
+.curtoggle button.on{background:var(--or)!important;}
+.catchips button.on{border-color:var(--or)!important;background:var(--ors)!important;}
+.mday{color:#B45309!important;}
+.chk{border-top:2px solid var(--line)!important;}
+.box{border:3px solid #D9D2C2!important;}
+.cat h2::before{content:"";display:inline-block;width:10px;height:22px;border-radius:5px;background:var(--dc);margin-right:10px;vertical-align:-3px;}
+.contact h2::before{content:"";display:inline-block;width:10px;height:22px;border-radius:5px;background:var(--pu);margin-right:10px;vertical-align:-3px;}
+.progress .bar{background:#F1ECE2!important;}
+.progress .bar i{background:var(--dc)!important;}
+.progress b{color:var(--ink2)!important;}
+.contact a{color:var(--pu)!important;}
+.cost{color:var(--ink2)!important;}
+.cost h2{color:var(--pu)!important;}
+.cost li{color:var(--ink2)!important;}
+.cost b{color:var(--pu)!important;}
+.cost::after{background:var(--pu)!important;}
+footer{color:var(--mut2)!important;}
+
 </style>
 </head>
 <body>
 <div class="phone">
-  <header>
-    <div class="kicker">서유럽 4개국 12일</div>
-    <h1>우리의 서유럽 여행</h1>
-    <span class="dday" id="dday">D-4</span>
-    <div class="route">✈ Oct 2 출발 · Oct 13 귀국<br>엄마 + 친구들 · 노랑풍선 인솔자 동행</div>
-    <div class="fsize">
-      <span class="lbl">🔤 글씨</span>
+  <header class="rhd">
+    <div class="rhd-top">
+      <div>
+        <div class="rkicker">서유럽 4개국 · 12일</div>
+        <h1>우리의 서유럽 여행</h1>
+      </div>
+      <span class="rdday" id="dday">D-2</span>
+    </div>
+    <div class="rfsize">
+      <span class="flbl">글씨</span>
       <button id="fsMinus" aria-label="글씨 작게">−</button>
       <b id="fsVal">100%</b>
       <button id="fsPlus" aria-label="글씨 크게">＋</button>
@@ -356,10 +474,10 @@
   </header>
 
   <nav class="tabs"><div class="tabpill"><span id="tabink"></span>
-    <button class="active" data-v="cal">🗓 일정</button>
-    <button data-v="help">🧰 도우미</button>
-    <button data-v="prep">🎒 여행준비</button>
-    <button data-v="info">📞 연락처</button>
+    <button class="active" data-v="cal">일정</button>
+    <button data-v="help">도우미</button>
+    <button data-v="prep">여행준비</button>
+    <button data-v="info">연락처</button>
   </div></nav>
 
   <main>
