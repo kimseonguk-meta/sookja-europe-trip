@@ -446,9 +446,16 @@ nav.tabs button.active{opacity:1;background:var(--tc)!important;color:#fff!impor
 .progress .bar i{background:var(--dc)!important;}
 .progress b{color:var(--ink2)!important;}
 .contact a{color:var(--pu)!important;}
+.contact ul{margin:10px 0 2px; padding-left:24px;}
+.contact ul li{font-size:calc(20px * var(--fsz)); margin:9px 0; font-weight:500; line-height:1.5; list-style:disc;}
+.contact ul li::marker{color:var(--pu);}
 .cost{color:var(--ink2)!important;}
 .cost h2{color:var(--pu)!important;}
-.cost li{color:var(--ink2)!important;}
+.cost ul{margin:0; padding-left:24px;}
+.cost li{color:var(--ink2)!important; list-style:disc; margin:10px 0; line-height:1.5;}
+.cost li::marker{color:var(--pu);}
+.cost .sub{margin:8px 0 4px; padding-left:22px;}
+.cost .sub li{list-style:circle; margin:7px 0; font-size:calc(19px * var(--fsz));}
 .cost b{color:var(--pu)!important;}
 .cost::after{background:var(--pu)!important;}
 footer{color:var(--mut2)!important;}
@@ -690,32 +697,52 @@ footer{color:var(--mut2)!important;}
       <div class="cost">
         <h2>💰 돈 관련 알아두기</h2>
         <ul>
-          <li>· 선택관광 8개 — 전부 하면 <b>520유로</b> (약 81만원, 필수는 아님)<br>로마 미니밴 70 · 아말피 마을 60 · 루체른 유람선 60 · 베니스 수상택시(금액 미표기) · 에펠탑 2층+세느강 야간 110 · 런던 템즈강 40 · 베니스 곤돌라 60 · 파리 몽마르트 40</li>
-          <li>· 융프라우·리기산 등정은 일정에 포함 (선택관광 아님)</li>
-          <li>· 가이드·기사 경비 <b>120유로</b> 별도</li>
-          <li>· 쇼핑 5회 포함되어 있음</li>
-          <li>· 호텔 택스는 이미 포함 — 현지에서 더 안 냄</li>
-          <li>· 1인실 추가요금 100만원 (해당 시)</li>
+          <li>선택관광 8개 — 전부 하면 <b style="white-space:nowrap">520유로</b> (약 81만원, 필수는 아님)
+            <ul class="sub">
+              <li>로마 미니밴 70€</li>
+              <li>아말피 마을 60€</li>
+              <li>루체른 유람선 60€</li>
+              <li>베니스 수상택시 (금액 미표기)</li>
+              <li>에펠탑 2층 + 세느강 야간 110€</li>
+              <li>런던 템즈강 40€</li>
+              <li>베니스 곤돌라 60€</li>
+              <li>파리 몽마르트 40€</li>
+            </ul>
+          </li>
+          <li>융프라우·리기산 등정은 일정에 포함 (선택관광 아님)</li>
+          <li>가이드·기사 경비 <b style="white-space:nowrap">120유로</b> 별도</li>
+          <li>쇼핑 5회 포함되어 있음</li>
+          <li>호텔 택스는 이미 포함 — 현지에서 더 안 냄</li>
+          <li>1인실 추가요금 100만원 (해당 시)</li>
         </ul>
       </div>
       <div class="contact dotcard pastel-1">
         <h2>🆘 비상 연락처</h2>
-        <p>인솔자 · 가이드는 출발 전 문자로 안내</p>
-        <p>노랑풍선 유럽팀 문자번호</p>
-        <p><a href="tel:1666-9614">1666-9614</a></p>
+        <ul>
+          <li>인솔자·가이드는 출발 전 문자로 안내</li>
+          <li>노랑풍선 유럽팀 문자번호<br><a href="tel:1666-9614">1666-9614</a></li>
+        </ul>
       </div>
       <div class="contact dotcard pastel-2">
         <h2>✈ 항공편</h2>
-        <p><b>KE907</b> Oct 2 (금) 10:55 인천 → 17:20 런던</p>
-        <p><b>KE932</b> Oct 12 (월) 21:25 로마 → Oct 13 (화) 15:55 인천</p>
-        <p style="color:var(--muted); font-size:calc(18px * var(--fsz));">대한항공 직항 · 제2터미널 3층 A카운터 집결<br>좌석은 출발 48시간 전부터 항공사에서 미리 지정<br>마일리지 왕복 약 8,000 적립 가능</p>
+        <p><b>KE907</b> · Oct 2 (금) 10:55<br>인천 출발 → 17:20 런던 도착</p>
+        <p><b>KE932</b> · Oct 12 (월) 21:25<br>로마 출발 → Oct 13 (화) 15:55 인천 도착</p>
+        <ul>
+          <li>대한항공 직항</li>
+          <li>제2터미널 3층 A카운터 집결</li>
+          <li>좌석은 출발 48시간 전부터 항공사에서 미리 지정</li>
+          <li>마일리지 왕복 약 8,000 적립 가능</li>
+        </ul>
       </div>
       <div class="contact dotcard pastel-3">
         <h2>🧳 수하물 · 기타</h2>
-        <p>위탁수하물 <b>23kg</b> 1개 · 기내용 <b>10kg</b> 1개</p>
-        <p>수신기(가이드 설명 듣는 기계)는 여행사에서 줌<br>이어폰은 본인 것 + <b>AA건전지 4개</b> 챙기기</p>
-        <p style="color:var(--muted); font-size:calc(18px * var(--fsz));">수신기 분실 시 10만원 물어야 해요</p>
-        <p style="color:var(--muted); font-size:calc(18px * var(--fsz));">시차: 프랑스·스위스·이탈리아 7시간 / 영국 8시간</p>
+        <ul>
+          <li>위탁수하물 <b>23kg</b> 1개 · 기내용 <b>10kg</b> 1개</li>
+          <li>수신기(가이드 설명 듣는 기계)는 여행사에서 줌</li>
+          <li>이어폰은 본인 것 + <b>AA건전지 4개</b> 챙기기</li>
+          <li>수신기 분실 시 10만원 물어야 해요</li>
+          <li>시차 — 프랑스·스위스·이탈리아 7시간 / 영국 8시간</li>
+        </ul>
       </div>
       <div class="contact dotcard pastel-4">
         <h2>✅ 영국 입국 허가 (ETA)</h2>
@@ -776,7 +803,7 @@ if ('serviceWorker' in navigator) {
 /* ---------- 일정 데이터 (노랑풍선 공식 일정표 기준, 2026-09-22 확인) ---------- */
 var DAYS = [
 {d:2,dow:'금',title:'인천 → 런던',sub:'출발일',
- spots:['KE907 10:55 인천 출발 → 17:20 런던 히드로 도착 (약 14시간 50분)','호텔에서 휴식 — 도착일 시내관광 없음','집결: 인천 제2터미널 3층 A카운터 노랑풍선 테이블'],
+ spots:['집결: 인천 제2터미널 3층 A카운터 노랑풍선 테이블','KE907 10:55 인천 출발 → 17:20 런던 히드로 도착 (약 14시간 50분)','호텔에서 휴식 — 도착일 시내관광 없음'],
  meals:['조식 -','중식 기내식','석식 기내식'],hotel:'런던 히드로 공항 근처 호텔 (출발 1일 전 홈페이지 공지)',
  notes:['영국 입국 ETA 발급 완료 ✓','장거리 비행 — 기내에서 자주 스트레칭하기'],
  fun:'런던은 “안개 도시”로 유명해요. 1년 중 맑은 날이 70일 정도밖에 안 된대요. 히드로 공항은 세계에서 가장 붐비는 공항 중 하나랍니다.'},
@@ -864,10 +891,10 @@ function renderDay(){
   h += '<span class="dlabel">DAY '+(x.d-1)+'</span>';
   h += '<h2>'+x.title+'</h2><div class="dowline">10월 '+x.d+'일 ('+x.dow+')'+(x.sub?' · '+x.sub:'')+'</div>';
   h += '<div class="sec"><h3>일정</h3><ul>'+x.spots.map(function(s){return '<li>'+s+'</li>';}).join('')+'</ul></div>';
+  if(x.opt) h += '<div class="opt">🎫 <b>'+x.opt+'</b></div>';
   h += '<div class="sec"><h3>식사</h3><div class="meals">'+x.meals.map(function(m){return '<span>'+m+'</span>';}).join('')+'</div></div>';
   h += '<div class="sec"><h3>숙박</h3><ul><li>'+x.hotel+'</li></ul></div>';
   if(x.fun) h += '<div class="fun">💡 <b>알아두면 재밌어요</b><br>'+x.fun+'</div>';
-  if(x.opt) h += '<div class="opt">🎫 <b>'+x.opt+'</b></div>';
   (x.notes||[]).forEach(function(n){ h += '<div class="note">⚠️ '+n+'</div>'; });
   h += '</div>';
   el.innerHTML = h;

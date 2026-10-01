@@ -1,5 +1,5 @@
 /* 우리의 서유럽 여행 — offline-first service worker */
-const CACHE = 'sookja-europe-v7';
+const CACHE = 'sookja-europe-v8';
 const ASSETS = [
   './',
   './index.html',
@@ -20,6 +20,12 @@ self.addEventListener('activate', (e) => {
     caches.keys()
       .then((keys) => Promise.all(keys.filter((k) => k !== CACHE).map((k) => caches.delete(k))))
       .then(() => self.clients.claim())
+      // 새 버전이 깔리면 열려 있는 화면을 자동으로 새 파일로 다시 불러온다.
+      // (어머니가 새로고침을 몰라도 되게)
+      .then(() => self.clients.matchAll({ type: 'window' }))
+      .then((clients) => Promise.all(
+        clients.map((c) => c.navigate(c.url).catch(() => {}))
+      ))
   );
 });
 
