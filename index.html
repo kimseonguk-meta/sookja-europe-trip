@@ -388,6 +388,15 @@ nav.tabs button.active{opacity:1;background:var(--tc)!important;color:#fff!impor
 #help-hub .hcard:nth-child(n){background:#fff!important;}
 .daycard.pastel-0,.daycard.pastel-1,.daycard.pastel-2,.daycard.pastel-3,
 .cat.pastel-0,.cat.pastel-1,.cat.pastel-2,.cat.pastel-3{background:#fff!important;}
+.tomorrow{background:#fff!important;border:1px solid var(--line)!important;border-radius:22px;
+  box-shadow:0 6px 18px rgba(80,70,55,.06)!important;padding:20px;margin-bottom:16px;cursor:pointer;}
+.tomorrow .tlab{display:inline-block;background:var(--bl);color:#fff;font-size:calc(16px * var(--fsz));
+  font-weight:800;padding:5px 14px;border-radius:999px;margin-bottom:8px;}
+.tomorrow .ttitle{font-size:calc(24px * var(--fsz));font-weight:800;}
+.tomorrow .tsub{font-size:calc(17px * var(--fsz));color:var(--mut2);font-weight:600;margin-bottom:12px;}
+.tomorrow .tbtns{display:flex;gap:8px;flex-wrap:wrap;}
+.tomorrow .tbtn{background:#F5F2EB;border:1px solid var(--line);border-radius:14px;
+  padding:12px 16px;font-size:calc(18px * var(--fsz));font-weight:800;color:var(--ink);}
 .pastel-0{--dc:var(--bl);} .pastel-1{--dc:var(--gr);} .pastel-2{--dc:var(--am);} .pastel-3{--dc:var(--pu);}
 .dotcard::after{background:#E7E0D2!important;}
 .daycard .dlabel{background:var(--dc)!important;color:#fff!important;
@@ -865,6 +874,13 @@ var DAYS = [
 
 /* ---------- 달력 ---------- */
 var selDay = 2;
+(function(){ /* 여행 기간(10/2~10/13)에는 앱을 열면 오늘 일정이 바로 보이게 */
+  var t=new Date();
+  if(t.getFullYear()===2026&&t.getMonth()===9){
+    var x=DAYS.find(function(v){return v.d===t.getDate();});
+    if(x) selDay=x.d;
+  }
+})();
 function renderCal(){
   var g = document.getElementById('calgrid'); g.innerHTML='';
   ['일','월','화','수','목','금','토'].forEach(function(w,i){
@@ -898,7 +914,28 @@ function renderDay(){
   if(x.fun) h += '<div class="fun">💡 <b>알아두면 재밌어요</b><br>'+x.fun+'</div>';
   (x.notes||[]).forEach(function(n){ h += '<div class="note">⚠️ '+n+'</div>'; });
   h += '</div>';
+  var tm=DAYS.find(function(v){return v.d===x.d+1;});
+  if(tm){
+    h+='<div class="tomorrow" onclick="goTomorrow('+tm.d+')">'
+      +'<span class="tlab">내일 미리보기</span>'
+      +'<div class="ttitle">'+tm.title+'</div>'
+      +'<div class="tsub">'+dateLabel(tm)+(tm.sub?' · '+tm.sub:'')+'</div>'
+      +'<div class="tbtns"><span class="tbtn">내일 일정 보기 →</span>'
+      +'<span class="tbtn" onclick="event.stopPropagation();goTomorrowWx('+tm.d+')">🌤️ 내일 날씨 보기</span></div>'
+      +'</div>';
+  }
   el.innerHTML = h;
+}
+function goTomorrow(d){
+  selDay=d; renderCal(); renderDay();
+  window.scrollTo({top:document.querySelector('.cal').offsetTop-10,behavior:'smooth'});
+}
+function wxCityForDate(d){
+  for(var i=0;i<WX_CITIES.length;i++){ if(WX_CITIES[i].days.indexOf(d)>=0) return i; }
+  return 0;
+}
+function goTomorrowWx(d){
+  goTab('help'); openHelp('help-wx'); setWxCity(wxCityForDate(d));
 }
 
 /* ---------- 체크리스트 ---------- */
