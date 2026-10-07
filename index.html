@@ -599,7 +599,7 @@ footer{color:var(--mut2)!important;}
         <h2 class="stitle">🕐 한국 시간</h2>
         <p class="ssub">전화하기 전에 확인해요.</p>
         <div class="clockbox">
-          <div class="city">📍 여행지 (파리 기준)</div>
+          <div class="city" id="clockEuCity">📍 여행지 (파리 기준)</div>
           <div class="time" id="clockEu">--:--</div>
           <div class="cdate" id="clockEuDate"></div>
         </div>
@@ -609,7 +609,7 @@ footer{color:var(--mut2)!important;}
           <div class="cdate" id="clockKrDate"></div>
         </div>
         <div class="callok" id="callOk"></div>
-        <p class="ssub">서유럽은 한국보다 7시간 느려요. (영국은 8시간)</p>
+        <p class="ssub" id="clockNote">서유럽은 한국보다 7시간 느려요. (영국은 8시간)</p>
       </div>
 
       <div class="helpsub" id="help-talk" style="display:none">
@@ -1147,13 +1147,35 @@ function editFxRate(){
 }
 
 /* ---------- 도우미: 한국 시간 ---------- */
+/* 일정 날짜별 여행지 시계 기준 (숙박 도시) */
+var CLOCK_DAY={
+ 2:{c:'런던',k:'영국',tz:'Europe/London',n:'영국은 한국보다 8시간 느려요.'},
+ 3:{c:'파리',k:'프랑스',tz:'Europe/Paris'},
+ 4:{c:'파리',k:'프랑스',tz:'Europe/Paris'},
+ 5:{c:'뮐루즈',k:'프랑스',tz:'Europe/Paris'},
+ 6:{c:'인터라켄',k:'스위스',tz:'Europe/Paris'},
+ 7:{c:'로카르노',k:'스위스',tz:'Europe/Paris'},
+ 8:{c:'밀라노',k:'이탈리아',tz:'Europe/Paris'},
+ 9:{c:'베니스',k:'이탈리아',tz:'Europe/Paris'},
+ 10:{c:'로마',k:'이탈리아',tz:'Europe/Paris'},
+ 11:{c:'로마',k:'이탈리아',tz:'Europe/Paris'},
+ 12:{c:'로마',k:'이탈리아',tz:'Europe/Paris'},
+ 13:{c:'인천',k:'한국',tz:'Asia/Seoul',n:'한국에 도착했어요. 수고 많으셨어요!'}
+};
+var CLOCK_DEF={c:'파리',k:'프랑스',tz:'Europe/Paris'};
+function clockRef(dt){
+  if(dt.getFullYear()===2026&&dt.getMonth()===9&&CLOCK_DAY[dt.getDate()]) return CLOCK_DAY[dt.getDate()];
+  return CLOCK_DEF;
+}
 function tickClock(){
   try{
-    var now=new Date();
-    var tEu=new Intl.DateTimeFormat('ko-KR',{timeZone:'Europe/Paris',hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
-    var dEu=new Intl.DateTimeFormat('ko-KR',{timeZone:'Europe/Paris',month:'long',day:'numeric',weekday:'short'}).format(now);
+    var now=new Date(),ref=clockRef(now);
+    var tEu=new Intl.DateTimeFormat('ko-KR',{timeZone:ref.tz,hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
+    var dEu=new Intl.DateTimeFormat('ko-KR',{timeZone:ref.tz,month:'long',day:'numeric',weekday:'short'}).format(now);
     var tKr=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',hour:'2-digit',minute:'2-digit',hour12:false}).format(now);
     var dKr=new Intl.DateTimeFormat('ko-KR',{timeZone:'Asia/Seoul',month:'long',day:'numeric',weekday:'short'}).format(now);
+    document.getElementById('clockEuCity').textContent='📍 여행지 ('+ref.c+' · '+ref.k+')';
+    document.getElementById('clockNote').textContent=ref.n||'서유럽은 한국보다 7시간 느려요. (영국은 8시간)';
     document.getElementById('clockEu').textContent=tEu;
     document.getElementById('clockEuDate').textContent=dEu;
     document.getElementById('clockKr').textContent=tKr;
